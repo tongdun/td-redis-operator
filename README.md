@@ -1,2 +1,3 @@
 # td-redis-operator
-打造全球最好的redis-operator
+
+一款更加强大的redis-operator，经过大规模生产级运行考验，支持分布式集群、支持主备切换等……
