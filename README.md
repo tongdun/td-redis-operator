@@ -27,7 +27,7 @@ Current scale：
 * Language: pure go development
 * Positioning: Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
 
-See the page for Introduction: [[Introduction]].
+Click here to view detailed information about Introduction.
 
 <br>
 <br>
