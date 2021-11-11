@@ -5,7 +5,7 @@
 Switch Languages: <a href="README.md">English Documents</a> | <a href="README-zh.md">中文文档</a>
 
 <br>
-
+<br>
 
 # Overview
 
@@ -18,6 +18,8 @@ Current scale：
 * PB level data
 * Involving 200+ online real-time businesses
 
+<br>
+<br>
 
 # Introduction
 
@@ -27,6 +29,9 @@ Current scale：
 
 See the page for Introduction: [[Introduction]].
 
+<br>
+<br>
+
 # Architecture
 
 ![td-redis-operator](https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png)
@@ -35,15 +40,22 @@ Principle description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on Kubernate.
 * Support two kinds of Redis instance management delivery, namely Redis active and standby and RedisCluster.
 
+<br>
+<br>
 
 # QuickStart
 
 Click here to view detailed information about QuickStart.
 
+<br>
+<br>
 
 # AdminGuide
 
 Click here to view detailed information about AdminGuide.
+
+<br>
+<br>
 
 # FAQ
 
@@ -53,4 +65,6 @@ You can also seek help in other ways:
 * issue： <a href="https://github.com/tongdun/td-redis-operator/issues">issues</a>
 * email： gaosheng.liang1024@gmail.com
 
+<br>
+<br>
 
