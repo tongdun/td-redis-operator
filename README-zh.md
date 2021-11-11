@@ -16,9 +16,9 @@
 </p>
 <strong>目前使用规模：</strong>
 <ol style="font-size: 14px;">
-<li>Redis实例2000+</li>
+<li>Redis实例5000+</li>
 <li>PB级别数据量量</li>
-<li>涉及200+个在线实时业务</li>
+<li>涉及1000+个在线实时业务</li>
 </ol>
 
 <h1>项目介绍</h1>
