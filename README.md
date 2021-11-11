@@ -19,7 +19,7 @@ Current scale：
 * Involving 200+ online real-time businesses
 
 
-# 产品简介
+# Introduction
 
 * Name: td-redis-operator
 * Language: pure go development
@@ -38,18 +38,19 @@ Principle description:
 
 # QuickStart
 
-See the page for quick start: [[QuickStart]].
+Click here to view detailed information about QuickStart.
+
 
 # AdminGuide
 
-See the page for admin deploy guide : [[AdminGuide]]
+Click here to view detailed information about AdminGuide.
 
 # FAQ
 
-See the page for FAQ: [[FAQ]]
+Click here to view detailed information about FAQ.
 
-* email： gaosheng.liang1024@gmail.com
+You can also seek help in other ways:
 * issue： <a href="https://github.com/tongdun/td-redis-operator/issues">issues</a>
-
+* email： gaosheng.liang1024@gmail.com
 
 
