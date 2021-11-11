@@ -1,3 +1,14 @@
+
+<br>
+
+![td-redis-operator](docs/imgs/td-redis-operator-logo.jpg)
+
+<br>
+
+Switch Languages: <a href="README.md">English Documents</a> | <a href="README-zh.md">中文文档</a>
+
+<br>
+
 <div class="blog_content">
     <div class="iteye-blog-content-contain" style="font-size: 14px;">
 <h1>项目背景</h1>
