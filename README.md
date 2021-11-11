@@ -14,9 +14,9 @@ Switch Languages: <a href="README.md">English Documents</a> | <a href="README-zh
 td-redis-operator第一版本可追溯到2018年，此次外部开源的版本为第2版，开发时间从2018年7月份一直持续到现在，目前同盾两地双中心的Redis集群全部部署在超大规模的Kubernates上。<br>
 
 目前使用规模：
-*Redis实例2000+
-*PB级别数据量量
-*涉及200+个在线实时业务
+* Redis实例2000+
+* PB级别数据量量
+* 涉及200+个在线实时业务
 
 
 # 产品简介
