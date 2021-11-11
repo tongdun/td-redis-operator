@@ -5,7 +5,6 @@
 Switch Languages: <a href="README.md">English Documents</a>  |  <a href="README-zh.md">中文文档</a>
 
 <br>
-<br>
 
 # Overview
 
@@ -19,7 +18,6 @@ Current scale：
 * Involving 1000+ real-time online business applications.
 
 <br>
-<br>
 
 # Introduction
 
@@ -29,7 +27,6 @@ Current scale：
 
 Click here to view detailed information about Introduction.
 
-<br>
 <br>
 
 # Architecture
@@ -41,20 +38,17 @@ Principle description:
 * Support two kinds of Redis instance management delivery, namely Redis active and standby and RedisCluster.
 
 <br>
-<br>
 
 # QuickStart
 
 Click here to view detailed information about QuickStart.
 
 <br>
-<br>
 
 # AdminGuide
 
 Click here to view detailed information about AdminGuide.
 
-<br>
 <br>
 
 # FAQ
