@@ -14,9 +14,9 @@ As a leading third-party risk control company in China, Tongdun Technology handl
 The first version of td-redis-operator can be traced back to 2018. The external open source version is the second version. The development time has continued from July 2018 to the present. At present, the Redis clusters of the two centers in Tongdun are all deployed in On the ultra-large Kubernates.<br>
 
 Current scale：
-* Redis instance 2000+
+* Redis instance 5000+
 * PB level data
-* Involving 200+ online real-time businesses
+* Involving 1000+ real-time online business applications.
 
 <br>
 <br>
