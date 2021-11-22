@@ -25,7 +25,7 @@ Current scale：
 * Language: pure go development
 * Positioning: Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
 
-Click here to view detailed information about Introduction.
+<a href="https://github.com/tongdun/td-redis-operator/wiki">Click here to view detailed information</a> about Introduction.
 
 <br>
 
