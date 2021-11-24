@@ -56,8 +56,9 @@ Click here to view detailed information about AdminGuide.
 Click here to view detailed information about FAQ.
 
 You can also seek help in other ways:
-* issue： <a href="https://github.com/tongdun/td-redis-operator/issues">issues</a>
-* email： gaosheng.liang1024@gmail.com
+* Issue: https://github.com/tongdun/td-redis-operator/issues
+* Wiki: https://github.com/tongdun/td-redis-operator/wiki
+* Email: gaosheng.liang1024@gmail.com
 
 <br>
 <br>
