@@ -1,0 +1,28 @@
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkPolicy
+metadata:
+  name: "{{ .Name }}{{ if .DenyAll }}-deny-all{{ end }}"
+spec:
+  selector: projectcalico.org/type == 'kubernetes-node'
+  types:
+  - Ingress
+  applyOnForward: true
+  preDNAT: true
+
+  ingress:
+  - action: {{ if .DenyAll }}Deny{{ else }}Allow{{ end }}
+    protocol: TCP
+    {{ if not .DenyAll }}
+    source:
+      nets:
+      {{ range .IPBlocks }}
+      - "{{ .CIDR }}"
+      {{ end }}
+    {{ end }}
+    destination:
+      nets:
+      - "{{ .Service }}/32"
+    {{ if not .DenyAll }}
+      ports:
+      - {{ .Port }}
+    {{ end }}

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    APPNAME: redis
+    CLUSTER: {{ .Name }}
+    DC: "{{ .Spec.DC }}"
+    ENV: "{{ .Spec.ENV }}"
+    RESOURCE_ID: {{ .Name }}
+  name: {{ .Name }}
+  namespace: redis
+spec:
+  ports:
+  - name: redis-service-port
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    CLUSTER: {{ .Name }}
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

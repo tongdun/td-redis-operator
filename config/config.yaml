@@ -1,0 +1,25 @@
+kubeconfig: /Users/lgs/.kube/config
+namespace: redis
+standbyimage: registry.tongdun.me/db/redis-standby:0.8
+sentiimage: registry.tongdun.me/db/sentinel-standby:0.6
+clusterimage: registry.tongdun.me/db/redis-cluster:0.2
+proxyimage: registry.tongdun.me/db/predixy:1.0
+redissecret: B213547b69b13224
+vip: 10.57.36.8
+#storageclass:
+middlewares:
+  - common
+  #- luc
+luc: http://10.59.57.138:8088
+monitorimage: registry.tongdun.me/db/redis-exporter:1.0
+logger:
+  loggertype: mysql
+  mysqladdr: 10.57.34.85:3306
+  mysqluser: dbamgr
+  mysqlpass: 606b484ddb7a7310
+  mysqldb: mon
+mon:
+  ip: 10.57.34.85:3306
+  db: mon
+  user: dbamgr
+  password: 606b484ddb7a7310

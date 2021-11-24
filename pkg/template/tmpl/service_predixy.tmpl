@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: predixy
+    name: {{ .Name }}
+  name: {{ .Name }}
+  namespace: {{ .Namespace }}
+spec:
+  ports:
+  - name: predixy-service-port
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    name: {{ .Name }}
+  sessionAffinity: None
+  type: {{ .NetMode }}

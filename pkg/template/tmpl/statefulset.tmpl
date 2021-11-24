@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Name }}"
+  namespace: "{{ .Namespace }}"
+  annotations:
+    mysqlproxy.alpha.tongdun.net/config-hash: {{ .Status.ConfigHash }}
+spec:
+  serviceName: "{{ .Name }}"
+  replicas: 2
+  updateStrategy:
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      app: mysqlproxy
+      name: {{ .Name }}
+  template:
+    metadata:
+      labels:
+        app: mysqlproxy
+        name: {{ .Name }}
+      annotations:
+        mysqlproxy.alpha.tongdun.net/config-hash: {{ .Status.ConfigHash }}
+    spec:
+      containers:
+      - name: mysqlproxy
+        image: "{{ .Spec.Image }}"
+        imagePullPolicy: IfNotPresent
+        command:
+        - haproxy
+        - -f
+        - /etc/haproxy/haproxy.cfg
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi
+        livenessProbe:
+          tcpSocket:
+            port: 3306
+          periodSeconds: 1
+        volumeMounts:
+        - name: config
+          mountPath: /etc/haproxy
+      volumes:
+      - name: config
+        configMap:
+          name: {{ .Name }}

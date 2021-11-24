@@ -1,0 +1,117 @@
+- description: "Test create a new service"
+  data:
+    service:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: test
+        namespace: test
+        annotations:
+          service.alpha.tongdun.net/singleton-selector: app=test
+        labels:
+          app: test
+      spec:
+        clusterIP: 10.59.43.208
+        ports:
+        - port: 3306
+          protocol: TCP
+          targetPort: 3306
+        sessionAffinity: None
+        type: ClusterIP
+    expectedEndpoints:
+      metadata:
+        name: test
+        namespace: test
+        labels:
+          app: test
+      subsets:
+      - addresses:
+        - hostname: test-0
+          ip: 192.168.1.1
+          nodeName: xx
+          targetRef:
+            kind: Pod
+            name: test-0
+            namespace: test
+            resourceVersion: "240320307"
+            uid: f2a3a7fc-e328-11e9-972d-246e96809e10
+        notReadyAddresses:
+        - hostname: test-1
+          ip: 192.168.1.2
+          nodeName: yy
+          targetRef:
+            kind: Pod
+            name: test-1
+            namespace: test
+            resourceVersion: "240321778"
+            uid: 9622c572-d831-11e9-972d-246e96809e14
+        ports:
+        - port: 3306
+          protocol: TCP
+
+    pods:
+    - apiVersion: v1
+      kind: Pod
+      metadata:
+        labels:
+          app: test
+        name: test-0
+        namespace: test
+        ownerReferences:
+        - apiVersion: apps/v1
+          blockOwnerDeletion: true
+          controller: true
+          kind: Deployment
+          name: test
+          uid: 5ad4324b-d82d-11e9-8f23-246e96811a80
+        resourceVersion: "240320307"
+        uid: f2a3a7fc-e328-11e9-972d-246e96809e10
+      spec:
+        containers:
+        - image: fake
+        enableServiceLinks: true
+        hostname: test-0
+        nodeName: xx
+        restartPolicy: Always
+        subdomain: test
+      status:
+        conditions:
+        - lastProbeTime: null
+          lastTransitionTime: 2019-10-02T15:09:47Z
+          status: "True"
+          type: Ready
+        hostIP: 10.57.36.3
+        podIP: 192.168.1.1
+    - apiVersion: v1
+      kind: Pod
+      metadata:
+        labels:
+          app: test
+        name: test-1
+        namespace: test
+        ownerReferences:
+        - apiVersion: apps/v1
+          blockOwnerDeletion: true
+          controller: true
+          kind: Deployment
+          name: test
+          uid: 5ad4324b-d82d-11e9-8f23-246e96811a80
+        resourceVersion: "240321778"
+        uid: 9622c572-d831-11e9-972d-246e96809e14
+      spec:
+        containers:
+        - image: fake
+        enableServiceLinks: true
+        hostname: test-1
+        nodeName: yy
+        restartPolicy: Always
+        subdomain: test
+      status:
+        conditions:
+        - lastProbeTime: null
+          lastTransitionTime: 2019-10-02T15:09:47Z
+          status: "True"
+          type: Ready
+        hostIP: 10.57.36.4
+        podIP: 192.168.1.2
+

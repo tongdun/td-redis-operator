@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Name }}"
+  namespace: "{{ .Namespace }}"
+data:
+  predixy.conf: |
+    Name PredixyTD
+    Bind 0.0.0.0:6379
+    WorkerThreads 32
+    ClientTimeout 300
+    LogVerbSample 0
+    LogDebugSample 0
+    LogInfoSample 10000
+    LogNoticeSample 1
+    LogWarnSample 1
+    LogErrorSample 1
+    Include auth.conf
+    Include cluster.conf
+  auth.conf: |
+    Authority {
+        Auth "{{ .ProxySecret }}" {
+            Mode read
+        }
+        Auth "{{ .ProxySecret }}" {
+            Mode write
+        }
+        Auth "{{ .ProxySecret }}" {
+            Mode admin
+        }
+    }
+  cluster.conf: |
+    ClusterServerPool {
+        MasterReadPriority 60
+        StaticSlaveReadPriority 50
+        DynamicSlaveReadPriority 50
+        RefreshInterval 1
+        ServerTimeout 1
+        ServerFailureLimit 10
+        ServerRetryTimeout 1
+        KeepAlive 120
+        Password {{ .Secret }}
+        Servers {
+            + {{ .Seed }}:6379
+        }
+    }

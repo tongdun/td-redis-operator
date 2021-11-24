@@ -1,0 +1,17 @@
+apiVersion: cache.tongdun.net/v1alpha1
+kind: RedisCluster
+metadata:
+  name: redis-cluster-jack
+  namespace: redis
+spec:
+  capacity: 196608
+  image: registry.tongdun.me/db/redis-cluster:0.2
+  size: 7
+  secret: "123"
+  dc: hz
+  env: production
+  app: cluster-jack
+  proxyimage: registry.tongdun.me/db/predixy:1.0
+  proxysecret: "123"
+  vip: 10.57.36.8
+  netmode: ClusterIP

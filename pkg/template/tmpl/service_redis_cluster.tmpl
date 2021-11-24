@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    APPNAME: redis
+    CLUSTER: redis-{{ .Spec.App }}
+    DC: "{{ .Spec.DC }}"
+    ENV: "{{ .Spec.ENV }}"
+    RESOURCE_ID: {{ .Name }}
+  annotations:
+      service.alpha.tongdun.net/redis-cluster-selector: APPNAME=redis,APP={{ .Spec.App }}
+  name: {{ .Name }}
+  namespace: redis
+spec:
+  ports:
+  - name: redis-service-port
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

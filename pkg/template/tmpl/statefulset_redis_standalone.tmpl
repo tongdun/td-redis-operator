@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    APPNAME: redis
+    CLUSTER: {{ .Name }}
+    DC: "{{ .Spec.DC }}"
+    ENV: "{{ .Spec.ENV }}"
+    RESOURCE_ID: {{ .Name }}
+  name: {{ .Name }}
+  namespace: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      CLUSTER: {{ .Name }}
+  serviceName: {{ .Name }}
+  template:
+    metadata:
+      labels:
+        APPNAME: redis
+        CLUSTER: {{ .Name }}
+        DC: "{{ .Spec.DC }}"
+        ENV: "{{ .Spec.ENV }}"
+        RESOURCE_ID: {{ .Name }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  RESOURCE_ID: {{ .Name }}
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      containers:
+      - env:
+        - name: REMOTE_BACKUPSERVER
+          value: 192.168.6.188
+        image: "{{ .Spec.Image }}"
+        imagePullPolicy: IfNotPresent
+        name: {{ .Name }}
+        ports:
+        - containerPort: 6379
+          name: redis-port
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "2"
+          requests:
+            cpu: "2"
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /proc/cpuinfo
+          name: lxcfs-cpuinfo
+        - mountPath: /proc/diskstats
+          name: lxcfs-diskstats
+        - mountPath: /proc/meminfo
+          name: lxcfs-meminfo
+        - mountPath: /proc/swaps
+          name: lxcfs-swaps
+        - mountPath: /proc/uptime
+          name: lxcfs-uptime
+        - mountPath: /home/admin/redis/data
+          name: redis-data
+        - name: config
+          mountPath: /home/admin/redis/.rediscfg
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: harbor-secret
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /var/lib/lxcfs-cpuinfo/cpuinfo2
+          type: ""
+        name: lxcfs-cpuinfo
+      - hostPath:
+          path: /var/lib/lxcfs/proc/diskstats
+          type: ""
+        name: lxcfs-diskstats
+      - hostPath:
+          path: /var/lib/lxcfs/proc/meminfo
+          type: ""
+        name: lxcfs-meminfo
+      - hostPath:
+          path: /var/lib/lxcfs/proc/stat
+          type: ""
+        name: lxcfs-stat
+      - hostPath:
+          path: /var/lib/lxcfs/proc/swaps
+          type: ""
+        name: lxcfs-swaps
+      - hostPath:
+          path: /var/lib/lxcfs/proc/uptime
+          type: ""
+        name: lxcfs-uptime
+      - emptyDir: {}
+        name: redis-data
+      - name: config
+        configMap:
+          name: {{ .Name }}
+  updateStrategy:
+    type: OnDelete

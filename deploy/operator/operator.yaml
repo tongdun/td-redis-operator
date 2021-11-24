@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operator
+  namespace: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: operator
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: operator
+    spec:
+      serviceAccountName: operator
+      containers:
+      - image: registry.tongdun.me/db/redis-priv-proxy-operator:20200628-a64081d3fd3
+        imagePullPolicy: Always
+        command:
+        - /app/operator
+        - --namespace=redis
+        - --mysql-secret=wZyhwccwfrlAsYpCePIq
+        - --v=6
+        name: operator
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: operator
+  namespace: redis
+imagePullSecrets:
+- name: harbor-secret
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: operator
+  namespace: redis
+rules:
+- apiGroups:
+  - cache.tongdun.net
+  resources:
+  - redisclusters
+  - redisstandbies
+  - redisstandbies/status
+  - redisclusters/status
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  - deployments
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - pods
+  - endpoints
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: operator
+  namespace: redis
+subjects:
+- kind: ServiceAccount
+  name: operator
+  namespace: redis
+roleRef:
+  kind: Role
+  name: operator
+  apiGroup: rbac.authorization.k8s.io
+---
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: Role
+#metadata:
+#  name: operator
+#  namespace: kube-node-lease
+#rules:
+#- apiGroups:
+#  - coordination
+#  resources:
+#  - lease
+#  verbs:
+#  - get
+#  - list
+#  - watch
+---
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: RoleBinding
+#metadata:
+#  name: operator
+#  namespace: kube-node-lease
+#subjects:
+#- kind: ServiceAccount
+#  name: operator
+#  namespace: redis
+#roleRef:
+#  kind: Role
+#  name: operator
+#  apiGroup: rbac.authorization.k8s.io
