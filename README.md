@@ -41,13 +41,13 @@ Principle description:
 
 # QuickStart
 
-Click here to view detailed information about QuickStart.
+<a href="https://github.com/tongdun/td-redis-operator/wiki">Click here to view detailed information</a> about QuickStart.
 
 <br>
 
 # AdminGuide
 
-Click here to view detailed information about AdminGuide.
+<a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">Click here to view detailed information</a> about AdminGuide.
 
 <br>
 
