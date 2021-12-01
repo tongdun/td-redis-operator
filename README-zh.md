@@ -39,14 +39,15 @@
 <p> </p>
 <h1>AdminGuide</h1>
 <p>See the page for admin deploy guide : [[AdminGuide]]</p>
-<p> </p>
-<h1>常见问题</h1>
-<p>See the page for FAQ: [[FAQ]]</p>
-<p> </p>
-        
-<p><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">4.  </span><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">报告Issue：</span><a href="https://github.com/tongdun/td-redis-operator/issues" style="color: #4183c4; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">issues</a></p>
-<p><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">4.  </span><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">Wiki文档：</span><a href="https://github.com/tongdun/td-redis-operator/wiki" style="color: #4183c4; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">issues</a></p>
-<p><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">2.  </span><span style="color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">邮件交流： gaosheng.liang1024@gmail.com / shijun.hou@tongdun.net</span></p>
-
-<p> </p>
 </div>
+
+    <br>
+
+# 常见问题
+
+* 提交issue： <a href="https://github.com/tongdun/td-redis-operator/issues">issues</a>
+* 邮箱联系： gaosheng.liang1024@gmail.com / shijun.hou@tongdun.net
+
+<br>
+<br>
+
