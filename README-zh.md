@@ -46,7 +46,7 @@
 
 # 常见问题
 
-* 提交issue： <a href="https://github.com/tongdun/td-redis-operator/issues">issues</a>
+* 提交issue： https://github.com/tongdun/td-redis-operator/issues
 * 邮箱联系： gaosheng.liang1024@gmail.com / shijun.hou@tongdun.net
 
 <br>
