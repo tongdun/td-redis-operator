@@ -1,0 +1,22 @@
+{{- if .Capabilities.APIVersions.Has "cache.tongdun.net/v1alpha1" -}}
+apiVersion: cache.tongdun.net/v1alpha1
+kind: RedisCluster
+metadata:
+  name: {{ .Values.cluster.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+spec:
+  app: {{ .Values.cluster.appName }}
+  capacity: 32768
+  dc: hz
+  env: production
+  image: {{ .Values.registry }}/{{ .Values.cluster.image }}
+  monitorimage: {{ .Values.registry }}/{{ .Values.cluster.monitorimage }}
+  netmode: NodePort
+  proxyimage: {{ .Values.registry }}/{{ .Values.cluster.proxyimage }}
+  proxysecret: "123"
+  realname: demo
+  secret: B213547b69b13224
+  size: 3
+  storageclass: ""
+  vip: "172.17.128.8"
+{{- end }}

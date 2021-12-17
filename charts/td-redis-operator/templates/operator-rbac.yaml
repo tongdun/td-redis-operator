@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+rules:
+- apiGroups:
+  - cache.tongdun.net
+  resources:
+  - redisclusters
+  - redisstandbies
+  - redisstandbies/status
+  - redisclusters/status
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  - deployments
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - pods
+  - endpoints
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - update
+  - patch
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Values.name }}
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}

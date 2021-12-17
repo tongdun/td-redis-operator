@@ -1,0 +1,20 @@
+{{- if .Capabilities.APIVersions.Has "cache.tongdun.net/v1alpha1"  -}}
+apiVersion: cache.tongdun.net/v1alpha1
+kind: RedisStandby
+metadata:
+  name: {{ .Values.standby.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+spec:
+  app: {{ .Values.standby.appName }}
+  capacity: 2048
+  dc: hz
+  env: production
+  image: {{ .Values.registry }}/{{ .Values.standby.image }}
+  monitorimage: {{ .Values.registry }}/{{ .Values.standby.monitorimage }}
+  netmode: NodePort
+  realname: sa
+  secret: "123"
+  sentinelimage: {{ .Values.registry }}/{{ .Values.standby.sentinelimage }}
+  storageclass: ""
+  vip: "172.17.128.8"
+{{- end }}
