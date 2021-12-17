@@ -1,6 +1,6 @@
 # td-redis-operator
 
-Installs the [td-redis-operator](https://github.com/prometheus-operator/kube-prometheus)
+Installs the [td-redis-operator](https://github.com/tongdun/td-redis-operator)
 
 ## Prerequisites
 
