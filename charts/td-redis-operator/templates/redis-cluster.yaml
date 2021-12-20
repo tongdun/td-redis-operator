@@ -18,5 +18,5 @@ spec:
   secret: B213547b69b13224
   size: 3
   storageclass: ""
-#  vip: "172.17.128.8"
+  vip: 172.17.128.8
 {{- end }}
