@@ -16,5 +16,5 @@ spec:
   secret: "123"
   sentinelimage: {{ .Values.registry }}/{{ .Values.standby.sentinelimage }}
   storageclass: ""
-  vip: "172.17.128.8"
+#  vip: "172.17.128.8"
 {{- end }}
