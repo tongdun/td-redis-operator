@@ -10,7 +10,7 @@ Installs the [td-redis-operator](https://github.com/tongdun/td-redis-operator)
 ## Get Repo Info
 
 ```console
-helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts
+helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
 helm repo update
 ```
 
@@ -21,9 +21,9 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ```console
 $ kubectl create namespace redis # If you have already created it, please skip.
 # Helm
-$ helm install --namespace=redis [RELEASE_NAME] td-redis-operator
+$ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator
 or
-$ helm install  td-redis-operator # will be installed into the default namespace
+$ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # will be installed into the default namespace
 ```
 
 _See [helm install](https://helm.sh/docs/helm/helm_install/) for command documentation._
@@ -50,7 +50,7 @@ kubectl delete crd redisstandbies.cache.tongdun.net
 
 ```console
 # Helm
-$ helm upgrade [RELEASE_NAME] td-redis-operator
+$ helm upgrade [RELEASE_NAME] td-redis-operator/td-redis-operator
 ```
 
 With Helm v3, CRDs created by this chart are not updated by default and should be manually updated. Consult also
