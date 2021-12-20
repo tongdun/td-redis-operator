@@ -7,8 +7,8 @@ namespace: default
 
 replicaCount: 1
 
-registry: 10.58.11.90:55000
-#registry: tongduncloud
+#registry: 10.58.11.90:55000
+registry: tongduncloud
 
 image:
   name: redis-priv-operator:20211217-4924aaee645
