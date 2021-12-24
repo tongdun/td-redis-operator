@@ -26,6 +26,25 @@ or
 $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # will be installed into the default namespace
 ```
 
+```
+# kubectl  get pod
+NAME                                   READY   STATUS    RESTARTS   AGE
+predixy-redis-jerry-7bcdf8f474-q2rnh   1/1     Running   0          16s
+predixy-redis-jerry-7bcdf8f474-tc7lp   1/1     Running   0          16s
+redis-jerry-0-0                        2/2     Running   0          31s
+redis-jerry-0-1                        2/2     Running   0          29s
+redis-jerry-1-0                        2/2     Running   0          31s
+redis-jerry-1-1                        2/2     Running   0          28s
+redis-jerry-2-0                        2/2     Running   0          31s
+redis-jerry-2-1                        2/2     Running   0          29s
+redis-tom-0                            2/2     Running   0          31s
+redis-tom-1                            1/2     Running   0          8s
+sentinel-tom-0                         1/1     Running   0          31s
+sentinel-tom-1                         1/1     Running   0          28s
+sentinel-tom-2                         1/1     Running   0          23s
+td-redis-operator-65bf6989bf-tdc6k     1/1     Running   0          32s
+```
+
 _See [helm install](https://helm.sh/docs/helm/helm_install/) for command documentation._
 
 ## Uninstall Chart

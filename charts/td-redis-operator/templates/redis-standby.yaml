@@ -2,18 +2,18 @@
 apiVersion: cache.tongdun.net/v1alpha1
 kind: RedisStandby
 metadata:
-  name: {{ .Values.standby.name }}
+  name: redis-{{ .Values.standby.name }}
   namespace: {{ default .Values.namespace .Release.Namespace }}
 spec:
-  app: {{ .Values.standby.appName }}
+  app: {{ .Values.standby.name }}
   capacity: 2048
   dc: hz
-  env: production
+  env: {{ .Values.standby.env }}
   image: {{ .Values.registry }}/{{ .Values.standby.image }}
   monitorimage: {{ .Values.registry }}/{{ .Values.standby.monitorimage }}
   netmode: NodePort
   realname: sa
-  secret: "123"
+  secret: {{ .Values.standby.secret }}
   sentinelimage: {{ .Values.registry }}/{{ .Values.standby.sentinelimage }}
   storageclass: ""
   vip: 172.17.128.8
