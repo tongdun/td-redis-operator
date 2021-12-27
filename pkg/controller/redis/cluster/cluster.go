@@ -186,7 +186,7 @@ func (c *Controller) syncRedisCluster(key string) error {
 	}
 
 	if _, err := c.extClient.CacheV1alpha1().RedisClusters(ns).UpdateStatus(context.TODO(), np, metav1.UpdateOptions{}); err != nil {
-		klog.Infof("%s更新失败:%v", name, err)
+		klog.Infof("%s update failed:%v", name, err)
 		return err
 	}
 	//klog.Infof("%s更新成功", name)
@@ -202,23 +202,17 @@ func (c *Controller) getRedisClusterPhase(mp *v1alpha1.RedisCluster, sts *appsv1
 		return err
 	}
 	if len(pods) != mp.Spec.Size*2 {
-		return errors.NewBadRequest(mp.Name + " pod数量不满足预期:" + fmt.Sprintf("%d", len(pods)))
+		return errors.NewBadRequest(mp.Name + " pod number not fit expect:" + fmt.Sprintf("%d", len(pods)))
 	}
 
 	for i := range pods {
 		pod := pods[i]
 		if !podutil.IsPodReady(pod) {
-			return errors.NewBadRequest(pod.Name + " pod未就绪")
+			return errors.NewBadRequest(pod.Name + " pod not ready")
 		}
 	}
 	if err = c.createRedisCluster(pods, mp); err != nil {
 		return err
 	}
-	/*if _, err := c.epLister.Endpoints(mp.Namespace).Get(mp.Name); err != nil {
-			if errors.IsNotFound(err) {
-	            klog.Warningf("%s ep未创建",mp.Name)
-			}
-			return err
-		}*/
 	return nil
 }

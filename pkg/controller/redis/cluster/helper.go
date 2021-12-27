@@ -361,7 +361,7 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 	}
 	if len(podsNotinCluster) == 0 {
 		if mp.Spec.Capacity != mp.Status.Capacity {
-			klog.Infof("开始纵向扩容%s 容量%d => %d", mp.Name, mp.Status.Capacity, mp.Spec.Capacity)
+			klog.Infof("start scale up %s capacity %d => %d", mp.Name, mp.Status.Capacity, mp.Spec.Capacity)
 
 			for _, pod := range podsInCluster {
 				p := redis.NewClient(&redis.Options{
@@ -376,7 +376,7 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 				}
 				p.Close()
 			}
-			klog.Infof("%s纵向扩容结束", mp.Name)
+			klog.Infof("%s scale up finished", mp.Name)
 			mp.Status.Capacity = mp.Spec.Capacity
 		}
 		return nil
@@ -394,7 +394,7 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 		gps_master_slave[ps[0]] = append(gps_master_slave[ps[0]], ps[1], c)
 	}
 	if len(mp.Status.Slots) != 0 {
-		klog.Infof("已初始化的集群，slot %v", mp.Status.Slots)
+		klog.Infof("initialized cluster，slot %v", mp.Status.Slots)
 		gp_empty := map[string][]*corev1.Pod{}
 		for _, pod := range podsNotinCluster {
 			rdb := redis.NewClient(&redis.Options{
@@ -438,10 +438,10 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 			}
 			m := &redis.Client{}
 			master := ""
-			klog.Infof("%s识别为需要扩容的集群", mp.Name)
+			klog.Infof("%s recognized need scale cluster", mp.Name)
 			for gp, pods := range gp_empty {
 				if len(pods) != 2 {
-					klog.Warningf("%s组未就绪节点不足两个", gp)
+					klog.Warningf("%s group ready nodes not reach 2", gp)
 					break
 				}
 				master = pods[0].Status.PodIP + ":6379"
@@ -449,7 +449,7 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 				if err := clusterCheck(mp.Spec.Secret, master); err != nil {
 					return err
 				}
-				klog.Infof("开始添加%s组", gp)
+				klog.Infof("start add %s group", gp)
 				m = redis.NewClient(&redis.Options{
 					Addr:     master,
 					Password: mp.Spec.Secret,
@@ -463,10 +463,10 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 					Password: mp.Spec.Secret,
 				})
 				if _, err := s.ClusterReplicate(node_id).Result(); err != nil {
-					klog.Infof("slave %s 同步 master %s失败%v", slave, master, err)
+					klog.Infof("slave %s sync master %s failed %v", slave, master, err)
 					return err
 				}
-				klog.Infof("slave %s 同步 master %s成功", slave, master)
+				klog.Infof("slave %s sync master %s success", slave, master)
 				time.Sleep(2 * time.Second)
 			}
 			//开始扩容
@@ -487,14 +487,14 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 			mp.Status.Size = mp.Spec.Size
 			mp.Status.Slots = map[string][]string{}
 			if rs, err := m.ClusterSlots().Result(); err != nil {
-				klog.Warningf("获取slot信息失败%v", err)
+				klog.Warningf("get slot info failed %v", err)
 				return err
 			} else {
 				for _, slot := range rs {
 					mp.Status.Slots[gps_ips[slot.Nodes[0].Addr]] = append(mp.Status.Slots[gps_ips[slot.Nodes[0].Addr]], fmt.Sprintf("%d-%d", slot.Start, slot.End))
 				}
 			}
-			klog.Infof("slot信息更新成功%v", mp.Status.Slots)
+			klog.Infof("slot info updated %v", mp.Status.Slots)
 			//reset maxmemory
 			for _, pod := range podsInCluster {
 				p := redis.NewClient(&redis.Options{
@@ -515,12 +515,12 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 		return nil
 	}
 	//operator image should have redis-client
-	klog.Infof("初始化集群%v", gps_masters)
+	klog.Infof("initialize cluster %v", gps_masters)
 	cmd := exec.Command("bash", "-c", fmt.Sprintf("echo yes|redis-cli -a %s --cluster create %s", mp.Spec.Secret, strings.Join(gps_masters, " ")))
 	if err := cmd.Run(); err != nil {
 		return err
 	}
-	klog.Infof("初始化集群成功，添加节点副本%v", gps_master_slave)
+	klog.Infof("initialize cluster success，add node replica %v", gps_master_slave)
 	rdb := redis.NewClusterClient(&redis.ClusterOptions{
 		Addrs:    gps_masters,
 		Password: mp.Spec.Secret,
@@ -538,12 +538,12 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 			Addr:     master,
 			Password: mp.Spec.Secret,
 		})
-		klog.Infof("创建master连接%s", master)
+		klog.Infof("create master connection %s", master)
 		node_id, err := m.Do("cluster", "myid").String()
 		if err != nil {
 			return err
 		}
-		klog.Infof("获取master %s node id %s", master, node_id)
+		klog.Infof("get master %s node id %s", master, node_id)
 		s := redis.NewClient(&redis.Options{
 			Addr:     gps_master_slave[master][0],
 			Password: mp.Spec.Secret,
@@ -552,19 +552,19 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 		mport := strings.Split(master, ":")[1]
 		klog.Infof("slave %s meet master %s", gps_master_slave[master][0], master)
 		if _, err := s.ClusterMeet(mip, mport).Result(); err != nil {
-			klog.Warningf("初始化阶段%s meet %s failed", gps_master_slave[master][0], master)
+			klog.Warningf("initialized phase %s meet %s failed", gps_master_slave[master][0], master)
 			return err
 		}
 		time.Sleep(2 * time.Second)
-		klog.Infof("slave %s 同步 master %s", gps_master_slave[master][0], master)
+		klog.Infof("slave %s sync master %s", gps_master_slave[master][0], master)
 		if _, err := s.ClusterReplicate(node_id).Result(); err != nil {
-			klog.Infof("slave %s 同步 master %s失败%v", gps_master_slave[master][0], master, err)
+			klog.Infof("slave %s sync master %s failed %v", gps_master_slave[master][0], master, err)
 			return err
 		}
-		klog.Infof("slave %s 同步 master %s成功", gps_master_slave[master][0], master)
+		klog.Infof("slave %s sync master %s success", gps_master_slave[master][0], master)
 
 	}
-	klog.Infof("添加节点副本成功")
+	klog.Infof("add node replica success")
 	mp.Status.Size = mp.Spec.Size
 	mp.Status.Capacity = mp.Spec.Capacity
 	mp.Status.Phase = v1alpha1.RedisClusterReady
@@ -589,7 +589,7 @@ func forgetBadNode(pods []*corev1.Pod, gps_ips map[string]string, password strin
 				node_id := strings.Split(info, " ")[0]
 				ipport := strings.Split(strings.Split(info, " ")[1], "@")[0]
 				if gps_ips[ipport] == "" {
-					klog.Infof("剔除无效节点%s", ipport)
+					klog.Infof("delete invalid node %s", ipport)
 					for _, pod2 := range pods {
 						p2 := redis.NewClient(&redis.Options{
 							Addr:     pod2.Status.PodIP + ":6379",

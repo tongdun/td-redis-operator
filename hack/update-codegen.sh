@@ -26,7 +26,7 @@ EXT_APIS_PKG=redis-priv-operator/pkg/apis
 #OUTPUT_PKG=${ROOT_PATH#"$GOPATH/src/"}/pkg/client
 OUTPUT_PKG=redis-priv-operator/pkg/client
 # apps:v1,v2 othergroup:v1alpha1,v1alpha2
-GROUP_VERSIONS="tdb:v1alpha1 cache:v1alpha1"
+GROUP_VERSIONS="cache:v1alpha1"
 
 function join() { local IFS="$1"; shift; echo "$*"; }
 
@@ -48,7 +48,7 @@ go build -v -o "${CONTROLLER_GEN}" ${CONTROLLER_GEN_PKG}/cmd/controller-gen
 echo "Generating crd at ${CRD_DIR}"
 
 ${CONTROLLER_GEN} \
-    crd:crdVersions=v1beta1 \
+    crd:crdVersions=v1 \
     paths=${ROOT_PATH}/pkg/apis/... \
     output:crd:dir=${CRD_DIR}
 

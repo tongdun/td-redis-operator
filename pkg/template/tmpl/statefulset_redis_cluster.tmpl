@@ -9,7 +9,7 @@ metadata:
     RESOURCE_ID: {{ .Name }}
     APP: "{{ .Spec.App }}"
   name: {{ .Name }}
-  namespace: redis
+  namespace: {{ .Namespace }}
 spec:
   replicas: 2
   selector:
@@ -29,6 +29,15 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9121"
     spec:
+      {{ if eq .Spec.ENV "production" -}}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                APP: "{{ .Spec.App }}"
+            topologyKey: kubernetes.io/hostname
+      {{else if eq .Spec.ENV "staging"  -}}
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -43,10 +52,14 @@ spec:
               matchLabels:
                 RESOURCE_ID: {{ .Name }}
             topologyKey: kubernetes.io/hostname
+      {{else if eq .Spec.ENV "demo" -}}
+      {{- end}}
       containers:
       - env:
         - name: REDIS_PASSWORD
           value: {{ .Spec.Secret }}
+        - name: NAMESPACE
+          value: {{ .Namespace }}
         image: "{{ .Spec.MonitorImage }}"
         imagePullPolicy: Always
         lifecycle:
@@ -89,24 +102,16 @@ spec:
         - containerPort: 16379
           name: redis-bus-port
           protocol: TCP
+        {{ if eq .Spec.ENV "production" -}}
         resources:
           limits:
             cpu: "2"
           requests:
             cpu: "2"
+        {{- end }}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /proc/cpuinfo
-          name: lxcfs-cpuinfo
-        - mountPath: /proc/diskstats
-          name: lxcfs-diskstats
-        - mountPath: /proc/meminfo
-          name: lxcfs-meminfo
-        - mountPath: /proc/swaps
-          name: lxcfs-swaps
-        - mountPath: /proc/uptime
-          name: lxcfs-uptime
         - mountPath: /home/admin/redis/data
           name: redis-data
         - name: config
@@ -119,30 +124,6 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - hostPath:
-          path: /var/lib/lxcfs-cpuinfo/cpuinfo2
-          type: ""
-        name: lxcfs-cpuinfo
-      - hostPath:
-          path: /var/lib/lxcfs/proc/diskstats
-          type: ""
-        name: lxcfs-diskstats
-      - hostPath:
-          path: /var/lib/lxcfs/proc/meminfo
-          type: ""
-        name: lxcfs-meminfo
-      - hostPath:
-          path: /var/lib/lxcfs/proc/stat
-          type: ""
-        name: lxcfs-stat
-      - hostPath:
-          path: /var/lib/lxcfs/proc/swaps
-          type: ""
-        name: lxcfs-swaps
-      - hostPath:
-          path: /var/lib/lxcfs/proc/uptime
-          type: ""
-        name: lxcfs-uptime
       - name: config
         configMap:
           name: redis-{{ .Spec.App }}

@@ -160,7 +160,7 @@ func (c *Client) getPodsWithlabel(key map[string]string) ([]v1.Pod, error) {
 
 func (c *Client) allowUpdate(r *Redis) (int, error) {
 	if r.ClusterIP == "" {
-		return 0, errors.New("空的ClusterIP")
+		return 0, errors.New("Empty ClusterIP")
 	}
 	switch r.Kind {
 	case RedisStandby:
@@ -168,7 +168,7 @@ func (c *Client) allowUpdate(r *Redis) (int, error) {
 			return 0, err
 		} else {
 			if r.Capacity <= memmb {
-				return 0, errors.New(fmt.Sprintf("主备%s禁止更新:期望%d,已使用%d", r.Name, r.Capacity, memmb))
+				return 0, errors.New(fmt.Sprintf("master slave%s forbidden update:expect %d,used %d", r.Name, r.Capacity, memmb))
 			}
 		}
 		return 0, nil
@@ -189,7 +189,7 @@ func (c *Client) allowUpdate(r *Redis) (int, error) {
 					return 0, err
 				} else {
 					if avg_mb <= memmb {
-						return 0, errors.New(fmt.Sprintf("集群节点%s禁止更新:期望%d,已使用%d", pod.Name, avg_mb, memmb))
+						return 0, errors.New(fmt.Sprintf("Cluster node %s forbidden update:expect %d,used %d", pod.Name, avg_mb, memmb))
 					}
 				}
 
@@ -203,7 +203,7 @@ func (c *Client) allowUpdate(r *Redis) (int, error) {
 		}
 		return size, nil
 	default:
-		return 0, errors.New("未知的资源类型")
+		return 0, errors.New("unknow resource type")
 	}
 	return 0, nil
 }
@@ -249,7 +249,7 @@ func roughResource(resource_type string, memory int64) error {
 				return nil
 			}
 		}
-		return errors.New(fmt.Sprintf("资源不足，请选择小规格或添加资源,fit %d,want %d,ready %d", fit_nodes, 2, 3))
+		return errors.New(fmt.Sprintf("resource not enough，please choose smaller specs or add node,fit %d,want %d,ready %d", fit_nodes, 2, 3))
 	}
 	if resource_type == RedisCluster {
 		for _, node_resource := range nodes_resource {
@@ -267,7 +267,7 @@ func roughResource(resource_type string, memory int64) error {
 				return nil
 			}
 		}
-		return errors.New(fmt.Sprintf("资源不足，请选择小规格或添加资源,fit %d,want %d", fit_nodes, 2*calSize(int(memory))))
+		return errors.New(fmt.Sprintf("resource not enough，please choose smaller specs or add node,fit %d,want %d", fit_nodes, 2*calSize(int(memory))))
 	}
 	return errors.New("error type")
 }

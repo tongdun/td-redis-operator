@@ -6,7 +6,7 @@ data:
     sentiimage: registry.tongdun.me/db/sentinel-standby:0.6
     clusterimage: registry.tongdun.me/db/redis-cluster:0.2
     proxyimage: registry.tongdun.me/db/predixy:1.0
-    redissecret: B213547b69b13224
+    redissecret: 123
     vip: 10.57.36.8
     #storageclass:
     #middlewares:

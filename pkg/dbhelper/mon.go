@@ -91,7 +91,7 @@ func GetRedisVM() ([]Redis, error) {
 	}
 	for dc, css := range meta {
 		for cs, ip := range css {
-			realname := "gaosheng.liang"
+			realname := "administrator"
 			if ow := vm_owner[cs]; ow != "" {
 				realname = ow
 			}

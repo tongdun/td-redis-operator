@@ -107,6 +107,7 @@ type RedisClusterSpec struct {
 
 	DC string `json:"dc,omitempty" protobuf:"bytes,4,opt,name=dc"`
 
+	// +kubebuilder:validation:Enum="production";"staging";"demo";
 	ENV string `json:"env,omitempty" protobuf:"bytes,5,opt,name=env"`
 
 	Size int `json:"size" protobuf:"bytes,6,name=size"`
@@ -159,6 +160,7 @@ type RedisStandbySpec struct {
 
 	DC string `json:"dc,omitempty" protobuf:"bytes,4,opt,name=dc"`
 
+	// +kubebuilder:validation:Enum="production";"staging";"demo";
 	ENV string `json:"env,omitempty" protobuf:"bytes,5,opt,name=env"`
 
 	// SentinelImage defines image of sentinel

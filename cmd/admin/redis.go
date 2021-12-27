@@ -40,50 +40,50 @@ func (c *Client) deleteRedis(co *gin.Context) {
 		return
 	}
 	if req.Name == "" {
-		co.JSON(http.StatusBadRequest, Result("无效的资源名", false))
+		co.JSON(http.StatusBadRequest, Result("invalid resource name", false))
 		return
 	}
-	logid := logger.LogOper(realname, req.Name, "删除")
+	logid := logger.LogOper(realname, req.Name, "delete")
 	switch req.Kind {
 	case RedisStandby:
 		name := c.Redis2Standby(&req).Name
 		if rs, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Get(context.TODO(), name, metav1.GetOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("查询%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("lookup %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		} else {
 			if rs.Spec.Realname != realname && !isdba {
-				co.JSON(http.StatusBadRequest, Result("无权限", false))
+				co.JSON(http.StatusBadRequest, Result("no privileges", false))
 				logger.UpdateOperStatus(logid, logger.OperFailed)
 				return
 			}
 
 		}
 		if err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Delete(context.TODO(), name, metav1.DeleteOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("删除%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("delete %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
 	case RedisCluster:
 		name := c.Redis2Cluster(&req).Name
 		if rs, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Get(context.TODO(), name, metav1.GetOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("查询%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("delete %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		} else {
 			if rs.Spec.Realname != realname && !isdba {
-				co.JSON(http.StatusBadRequest, Result("无权限", false))
+				co.JSON(http.StatusBadRequest, Result("no privileges", false))
 				logger.UpdateOperStatus(logid, logger.OperFailed)
 				return
 			}
 		}
 		if err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Delete(context.TODO(), c.Redis2Cluster(&req).Name, metav1.DeleteOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("删除%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("delete %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
 	default:
-		co.JSON(http.StatusBadRequest, Result("无效的资源名", false))
+		co.JSON(http.StatusBadRequest, Result("invalied resouce name", false))
 		logger.UpdateOperStatus(logid, logger.OperFailed)
 		return
 	}
@@ -99,7 +99,7 @@ func (c *Client) flushRedis(co *gin.Context) {
 		co.JSON(http.StatusBadRequest, Result(err.Error(), false))
 		return
 	}
-	logid := logger.LogOper(realname, req.Name, "清空")
+	logid := logger.LogOper(realname, req.Name, "empty clean")
 	switch req.Kind {
 	case RedisStandby:
 		c := redis.NewClient(&redis.Options{
@@ -306,7 +306,7 @@ func (c *Client) changeOwner(co *gin.Context) {
 	newowner := co.Query("newowner")
 	cloud_name := "redis-" + name
 	if name == "" || newowner == "" {
-		co.JSON(http.StatusInternalServerError, Result("无效请求", false))
+		co.JSON(http.StatusInternalServerError, Result("invalid request", false))
 		return
 	}
 	if r, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Get(context.TODO(), cloud_name, metav1.GetOptions{}); err != nil {
@@ -322,7 +322,7 @@ func (c *Client) changeOwner(co *gin.Context) {
 			return
 
 		}
-		co.JSON(http.StatusOK, Result("更新成功，cachetype:redis standby", true))
+		co.JSON(http.StatusOK, Result("update success，cachetype:redis standby", true))
 		return
 	}
 	if r, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Get(context.TODO(), cloud_name, metav1.GetOptions{}); err != nil {
@@ -336,7 +336,7 @@ func (c *Client) changeOwner(co *gin.Context) {
 			co.JSON(http.StatusInternalServerError, Result(err.Error(), false))
 			return
 		}
-		co.JSON(http.StatusOK, Result("更新成功，cachetype:redis cluster", true))
+		co.JSON(http.StatusOK, Result("update success，cachetype:redis cluster", true))
 		return
 	}
 	//更新v1 redis
@@ -346,7 +346,7 @@ func (c *Client) changeOwner(co *gin.Context) {
 			return
 		}
 	} else {
-		co.JSON(http.StatusOK, Result("更新成功，cachetype:redisv1", true))
+		co.JSON(http.StatusOK, Result("update success，cachetype:redisv1", true))
 		return
 	}
 	//查找是否是虚拟机资源
@@ -361,12 +361,12 @@ func (c *Client) changeOwner(co *gin.Context) {
 				co.JSON(http.StatusInternalServerError, Result(err.Error(), false))
 				return
 			}
-			co.JSON(http.StatusOK, Result("更新成功，cachetype:redisvm", true))
+			co.JSON(http.StatusOK, Result("update success，cachetype:redisvm", true))
 			return
 		}
 	}
 	//返回为空
-	co.JSON(http.StatusOK, Result("未知的资源", false))
+	co.JSON(http.StatusOK, Result("unknow resource", false))
 	return
 
 }
@@ -383,24 +383,24 @@ func (c *Client) createRedis(co *gin.Context) {
 	switch req.Kind {
 	case RedisStandby:
 		if err := roughResource(RedisStandby, int64(req.Capacity)); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("创建主备%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("create standby %s failed:%v", req.Name, err), false))
 			return
 		}
 		if _, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Create(context.TODO(), c.Redis2Standby(&req), metav1.CreateOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("创建主备%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("create standby %s failed:%v", req.Name, err), false))
 			return
 		}
 	case RedisCluster:
 		if err := roughResource(RedisCluster, int64(req.Capacity)); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("创建集群%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("create cluster %s failed:%v", req.Name, err), false))
 			return
 		}
 		if _, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Create(context.TODO(), c.Redis2Cluster(&req), metav1.CreateOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("创建集群%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("create cluster %s failed:%v", req.Name, err), false))
 			return
 		}
 	default:
-		co.JSON(http.StatusBadRequest, Result("无效的资源名", false))
+		co.JSON(http.StatusBadRequest, Result("invalid resource", false))
 		return
 	}
 	co.JSON(http.StatusOK, Result("ok", true))
@@ -414,9 +414,9 @@ func (c *Client) updateRedis(co *gin.Context) {
 		co.JSON(http.StatusBadRequest, Result(err.Error(), false))
 		return
 	}
-	logid := logger.LogOper(realname, req.Name, "升降配")
+	logid := logger.LogOper(realname, req.Name, "update quota")
 	if req.Phase == v1alpha1.RedisUpdateQuota {
-		co.JSON(http.StatusInternalServerError, Result(req.Name+"升降配中请等待", false))
+		co.JSON(http.StatusInternalServerError, Result(req.Name+"updating quota,please waiting", false))
 		logger.UpdateOperStatus(logid, logger.OperFailed)
 		return
 	}
@@ -424,19 +424,19 @@ func (c *Client) updateRedis(co *gin.Context) {
 	case RedisStandby:
 		name := c.Redis2Standby(&req).Name
 		if rs, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Get(context.TODO(), name, metav1.GetOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("查询%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("look for %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		} else {
 			if rs.Spec.Realname != realname && !isdba {
-				co.JSON(http.StatusBadRequest, Result("无权限", false))
+				co.JSON(http.StatusBadRequest, Result("no privileges", false))
 				logger.UpdateOperStatus(logid, logger.OperFailed)
 				return
 			}
 
 		}
 		if err := roughResource(RedisStandby, int64(req.Capacity)); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("更新主备%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("update standby %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
@@ -447,7 +447,7 @@ func (c *Client) updateRedis(co *gin.Context) {
 		}
 		rs, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Get(context.TODO(), name, metav1.GetOptions{})
 		if err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("获取主备%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("get standby %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
@@ -455,7 +455,7 @@ func (c *Client) updateRedis(co *gin.Context) {
 		rs.Spec.NetMode = req.NetMode
 		rs.Spec.Vip = c.Vip
 		if _, err := c.ExtClient.CacheV1alpha1().RedisStandbies(c.Namespace).Update(context.TODO(), rs, metav1.UpdateOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("更新主备%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("update standby %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
@@ -463,18 +463,18 @@ func (c *Client) updateRedis(co *gin.Context) {
 	case RedisCluster:
 		name := c.Redis2Cluster(&req).Name
 		if rs, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Get(context.TODO(), name, metav1.GetOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("查询%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("look for %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		} else {
 			if rs.Spec.Realname != realname && !isdba {
-				co.JSON(http.StatusBadRequest, Result("无权限", false))
+				co.JSON(http.StatusBadRequest, Result("no privileges", false))
 				logger.UpdateOperStatus(logid, logger.OperFailed)
 				return
 			}
 		}
 		if err := roughResource(RedisCluster, int64(req.Capacity)); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("更新集群%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("update cluster %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
@@ -486,7 +486,7 @@ func (c *Client) updateRedis(co *gin.Context) {
 		}
 		cs, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Get(context.TODO(), c.Redis2Cluster(&req).Name, metav1.GetOptions{})
 		if err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("获取集群%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("gain cluster %s failed:%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
@@ -495,13 +495,13 @@ func (c *Client) updateRedis(co *gin.Context) {
 		cs.Spec.NetMode = req.NetMode
 		cs.Spec.Vip = c.Vip
 		if _, err := c.ExtClient.CacheV1alpha1().RedisClusters(c.Namespace).Update(context.TODO(), cs, metav1.UpdateOptions{}); err != nil {
-			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("更新集群%s失败:%v", req.Name, err), false))
+			co.JSON(http.StatusInternalServerError, Result(fmt.Sprintf("update cluster %s :%v", req.Name, err), false))
 			logger.UpdateOperStatus(logid, logger.OperFailed)
 			return
 		}
 		break
 	default:
-		co.JSON(http.StatusBadRequest, Result("无效的资源名", false))
+		co.JSON(http.StatusBadRequest, Result("invalid resource name", false))
 		logger.UpdateOperStatus(logid, logger.OperFailed)
 		return
 	}
