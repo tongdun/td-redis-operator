@@ -425,10 +425,10 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 					klog.Warningf("%s meet %s failed %v", pod.Name, p.Name, err)
 				}
 			}
-			//剔除无效节点
+			//DELETE INVALID NODE
 			forgetBadNode(pods, gps_ips, mp.Spec.Secret)
 		}
-		//是否需要扩容
+		//NEED SCALE?
 		if mp.Spec.Size > mp.Status.Size {
 			mp.Status.Phase = v1alpha1.RedisUpdateQuota
 			if rp, err := c.extClient.CacheV1alpha1().RedisClusters(mp.Namespace).UpdateStatus(context.TODO(), mp, metav1.UpdateOptions{}); err != nil {
@@ -469,7 +469,7 @@ func (c *Controller) createRedisCluster(pods []*corev1.Pod, mp *v1alpha1.RedisCl
 				klog.Infof("slave %s sync master %s success", slave, master)
 				time.Sleep(2 * time.Second)
 			}
-			//开始扩容
+			//START SCALE
 			if err := clusterCheck(mp.Spec.Secret, master); err != nil {
 				return err
 			}
