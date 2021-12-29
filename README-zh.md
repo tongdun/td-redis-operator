@@ -56,7 +56,7 @@ kubectl apply -f xxx.yaml
 <p> </p>
         
 <h1>AdminGuide</h1>
-<p>See the page for admin deploy guide : https://github.com/tongdun/td-redis-operator/wiki/【中文】管理指南</p>
+<p>See the page for admin deploy guide : https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</p>
         
 </div>
 
