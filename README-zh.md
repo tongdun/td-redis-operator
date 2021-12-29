@@ -33,7 +33,7 @@
 <p>2.   支持两种Redis实例管理交付，即Redis主备和RedisCluster</p>
 <p> </p>
 <h1>Introduction</h1>
-<p>See the page for Introduction: https://github.com/tongdun/td-redis-operator/wiki/Introduction</p>
+<p>点击查看：https://github.com/tongdun/td-redis-operator/wiki/Introduction</p>
         
 <h1>QuickStart</h1>
         
@@ -58,7 +58,7 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 <p> </p>
         
 <h1>AdminGuide</h1>
-<p>See the page for admin deploy guide : https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</p>
+<p>点击查看：https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</p>
         
 </div>
 
