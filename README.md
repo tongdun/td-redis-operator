@@ -44,9 +44,9 @@ Principle description:
 You can use the `helm` command to deploy:
 
 ```
-helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
-helm repo update
-helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
+$ helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
+$ helm repo update
+$ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
 
 For details on the deployment process of `helm`, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Helm-Deploy"> helm deployment document </a>.
@@ -54,7 +54,7 @@ For details on the deployment process of `helm`, see <a href="https://github.com
 In addition to deploying with `helm`, you can also deploy with `kubectl` command:
 
 ```
-kubectl apply -f xxx.yaml        
+$ kubectl apply -f xxx.yaml        
 ```
 
 For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>.
