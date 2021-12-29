@@ -72,7 +72,7 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 # FAQ
 
-Click here to view detailed information about FAQ.
+<a href="https://github.com/tongdun/td-redis-operator/wiki/FAQ">Click here to view detailed information</a> about FAQ.
 
 You can also seek help in other ways:
 * Issue: https://github.com/tongdun/td-redis-operator/issues
