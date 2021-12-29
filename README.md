@@ -49,15 +49,15 @@ helm repo update
 helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
 
-For details on the deployment process of helm, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Helm-Deploy"> helm deployment document </a>。
+For details on the deployment process of `helm`, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Helm-Deploy"> helm deployment document </a>.
 
-In addition to deploying with helm, you can also deploy with kubectl command:
+In addition to deploying with `helm`, you can also deploy with `kubectl` command:
 
 ```
 kubectl apply -f xxx.yaml        
 ```
 
-For more yaml files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>。
+For more yaml files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>.
 
 <br>
 
