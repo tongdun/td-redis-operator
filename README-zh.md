@@ -53,9 +53,8 @@ kubectl apply -f xxx.yaml
 ```
 <p>更多YAML文件详见xxxx</p>
         
-<h1>QuickStart</h1>
-<p>See the page for quick start: [[QuickStart]].</p>
 <p> </p>
+        
 <h1>AdminGuide</h1>
 <p>See the page for admin deploy guide : [[AdminGuide]]</p>
         
