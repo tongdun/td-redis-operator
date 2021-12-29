@@ -44,9 +44,9 @@ helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/char
 helm repo update
 helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
-<p>关于Helm的部署过程详见<a href="https://github.com/tongdun/td-redis-operator/wiki/Helm部署">Helm部署文档</a>。</p>
+<p>关于helm的部署过程详见<a href="https://github.com/tongdun/td-redis-operator/wiki/Helm部署">Helm部署文档</a>。</p>
         
-<p>你也可以使用kubectl命令部署：</p>
+<p>除了使用helm部署外，你也可以使用kubectl命令部署：</p>
 
 ```
 kubectl apply -f xxx.yaml        
