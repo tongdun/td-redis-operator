@@ -57,7 +57,7 @@ In addition to deploying with `helm`, you can also deploy with `kubectl` command
 kubectl apply -f xxx.yaml        
 ```
 
-For more yaml files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>.
+For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>.
 
 <br>
 
