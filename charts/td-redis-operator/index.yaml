@@ -1,0 +1,10 @@
+apiVersion: v3
+entries:
+  td-redis-operator:
+  - apiVersion: "v3"
+    appVersion: "0.1.0"
+    created: "2021-12-17T19:29:59.72750942+08:00"
+    urls:
+    - https://github.com/tongdun/td-redis-operator/releases/download/v0.1.0-beta/td-redis-operator-1.tgz
+    version: 0.1.0
+    description: tongdun redis operator

@@ -1,0 +1,22 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }} -n {{ .Release.Namespace }}
+  $ helm get [command] {{ .Release.Name }} -n {{ .Release.Namespace }}
+
+Now you can enjoy your redis cluster !
+
+#Kind: RedisCluster
+You can get the redis service by using command such as:
+  $ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
+
+you secret is: {{ .Values.cluster.secret }}
+
+#Kind: RedisStandby
+  $ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
+
+you secret is: {{ .Values.standby.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}

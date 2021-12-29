@@ -1,0 +1,8 @@
+apiVersion: "v3"
+name: td-redis-operator
+description: A Helm chart for tongdun redis operator
+version: "1"
+appVersion: "0.1.0"
+maintainers:
+  - name: Jiajia Wen
+    email: jiajia.wen@tongdun.net

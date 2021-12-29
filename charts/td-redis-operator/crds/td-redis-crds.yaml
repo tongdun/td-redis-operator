@@ -1,0 +1,225 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.3.0
+  name: redisclusters.cache.tongdun.net
+spec:
+  group: cache.tongdun.net
+  names:
+    kind: RedisCluster
+    listKind: RedisClusterList
+    plural: redisclusters
+    singular: rediscluster
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: RedisCluster defines application redis cluster
+          properties:
+            apiVersion:
+              description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              type: string
+            kind:
+              description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: Spec defines the desired props of redis cluster
+              properties:
+                app:
+                  type: string
+                capacity:
+                  description: Redis memory capacity
+                  type: integer
+                dc:
+                  type: string
+                env:
+                  enum:
+                    - production
+                    - staging
+                    - demo
+                  type: string
+                image:
+                  description: Image defines image of redis cluster
+                  type: string
+                monitorimage:
+                  type: string
+                netmode:
+                  type: string
+                proxyimage:
+                  type: string
+                proxysecret:
+                  type: string
+                realname:
+                  type: string
+                secret:
+                  description: Secret defines secret for redis
+                  type: string
+                size:
+                  type: integer
+                storageclass:
+                  type: string
+                vip:
+                  type: string
+              required:
+                - app
+                - image
+                - monitorimage
+                - netmode
+                - proxyimage
+                - proxysecret
+                - realname
+                - size
+                - storageclass
+                - vip
+              type: object
+            status:
+              description: Status defines the current status of redis cluster
+              properties:
+                capacity:
+                  type: integer
+                clusterIP:
+                  description: ClusterIP defines internal cluster ip used by redis cluster
+                  type: string
+                externalip:
+                  type: string
+                gmtCreate:
+                  description: Resource create time
+                  type: string
+                phase:
+                  description: Phase defines a phase
+                  type: string
+                size:
+                  type: integer
+                slots:
+                  additionalProperties:
+                    items:
+                      type: string
+                    type: array
+                  description: slots info
+                  type: object
+              required:
+                - clusterIP
+                - externalip
+                - gmtCreate
+                - phase
+                - size
+                - slots
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.3.0
+  name: redisstandbies.cache.tongdun.net
+spec:
+  group: cache.tongdun.net
+  names:
+    kind: RedisStandby
+    listKind: RedisStandbyList
+    plural: redisstandbies
+    singular: redisstandby
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: RedisStandby defines application redis masterslave
+          properties:
+            apiVersion:
+              description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              type: string
+            kind:
+              description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: Spec defines the desired props of redis master slave
+              properties:
+                app:
+                  type: string
+                capacity:
+                  description: Redis memory capacity
+                  type: integer
+                dc:
+                  type: string
+                env:
+                  enum:
+                    - production
+                    - staging
+                    - demo
+                  type: string
+                image:
+                  description: Image defines image of redis master slave
+                  type: string
+                monitorimage:
+                  type: string
+                netmode:
+                  type: string
+                realname:
+                  type: string
+                secret:
+                  description: Secret defines secret for redis
+                  type: string
+                sentinelimage:
+                  description: SentinelImage defines image of sentinel
+                  type: string
+                storageclass:
+                  type: string
+                vip:
+                  type: string
+              required:
+                - app
+                - image
+                - monitorimage
+                - netmode
+                - realname
+                - sentinelimage
+                - storageclass
+                - vip
+              type: object
+            status:
+              description: Status defines the current status of redis master slave
+              properties:
+                capacity:
+                  type: integer
+                clusterIP:
+                  description: ClusterIP defines internal cluster ip used by redis master
+                  type: string
+                externalip:
+                  type: string
+                gmtCreate:
+                  description: Resource create time
+                  type: string
+                phase:
+                  description: Phase defines a phase
+                  type: string
+              required:
+                - clusterIP
+                - externalip
+                - gmtCreate
+                - phase
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
