@@ -44,14 +44,14 @@ helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/char
 helm repo update
 helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
-<p>关于Helm的部署过程详见xxxx</p>
+<p>关于Helm的部署过程详见<a herf="https://github.com/tongdun/td-redis-operator/wiki/Helm部署">Helm部署文档</a></p>
         
 <p>你也可以使用`kubectl apply`命令部署：</p>
 
 ```
 kubectl apply -f xxx.yaml        
 ```
-<p>更多YAML文件详见xxxx</p>
+<p>更多YAML文件详见<a herf="https://github.com/tongdun/td-redis-operator/wiki/YAML部署">YAML部署文档</a></p>
         
 <p> </p>
         
