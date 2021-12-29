@@ -34,6 +34,25 @@
 <p> </p>
 <h1>Introduction</h1>
 <p>See the page for Introduction: [[Introduction]].</p>
+        
+<h1>QuickStart</h1>
+        
+<p>你可以使用`helm install`命令来部署：</p>
+
+```
+helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
+helm repo update
+helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
+```
+<p>关于Helm的部署过程详见xxxx</p>
+        
+<p>你也可以使用`kubectl apply`命令部署：</p>
+
+```
+kubectl apply -f xxx.yaml        
+```
+<p>更多YAML文件详见xxxx</p>
+        
 <h1>QuickStart</h1>
 <p>See the page for quick start: [[QuickStart]].</p>
 <p> </p>
