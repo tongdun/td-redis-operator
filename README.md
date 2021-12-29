@@ -54,7 +54,10 @@ For details on the deployment process of `helm`, see <a href="https://github.com
 In addition to deploying with `helm`, you can also deploy with `kubectl` command:
 
 ```
-$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/deploy/deploy.yaml    
+$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/deploy/deploy.yaml     
+$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/redis_cluster.yaml
+$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/redis_standby.yaml
+
 ```
 
 For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/YAML-Deploy"> yaml deployment document </a>.
