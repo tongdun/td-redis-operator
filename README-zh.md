@@ -65,6 +65,8 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 <br>
 
 # 常见问题
+    
+你可以<a href="https://github.com/tongdun/td-redis-operator/wiki/常见问题回答">点击这里查看常见问题集锦</a>。
 
 * 提交issue： https://github.com/tongdun/td-redis-operator/issues
 * 邮箱联系： gaosheng.liang1024@gmail.com / shijun.hou@tongdun.net
