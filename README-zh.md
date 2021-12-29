@@ -40,16 +40,16 @@
 <p>你可以使用helm命令来部署：</p>
 
 ```
-helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
-helm repo update
-helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
+$ helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
+$ helm repo update
+$ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
 <p>关于helm的部署过程详见<a href="https://github.com/tongdun/td-redis-operator/wiki/Helm部署">Helm部署文档</a>。</p>
         
 <p>除了使用helm部署外，你也可以使用kubectl命令部署：</p>
 
 ```
-kubectl apply -f xxx.yaml        
+$ kubectl apply -f xxx.yaml        
 ```
 <p>更多YAML文件详见<a href="https://github.com/tongdun/td-redis-operator/wiki/YAML部署">YAML部署文档</a>。</p>
         
