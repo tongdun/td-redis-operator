@@ -24,6 +24,7 @@ spec:
         ENV: "{{ .Spec.ENV }}"
         RESOURCE_ID: sentinel-{{ .Spec.App }}
     spec:
+      {{ if eq .Spec.ENV "production" -}}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -31,6 +32,7 @@ spec:
                matchLabels:
                   RESOURCE_ID: sentinel-{{ .Spec.App }}
             topologyKey: kubernetes.io/hostname
+      {{- end }}
       containers:
       - env:
         - name: APP_CLUSTER
