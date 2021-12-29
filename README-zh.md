@@ -33,7 +33,7 @@
 <p>2.   支持两种Redis实例管理交付，即Redis主备和RedisCluster</p>
 <p> </p>
 <h1>Introduction</h1>
-<p>See the page for Introduction: [[Introduction]].</p>
+<p>See the page for Introduction: https://github.com/tongdun/td-redis-operator/wiki/Introduction</p>
         
 <h1>QuickStart</h1>
         
@@ -56,7 +56,7 @@ kubectl apply -f xxx.yaml
 <p> </p>
         
 <h1>AdminGuide</h1>
-<p>See the page for admin deploy guide : [[AdminGuide]]</p>
+<p>See the page for admin deploy guide : https://github.com/tongdun/td-redis-operator/wiki/【中文】管理指南</p>
         
 </div>
 
