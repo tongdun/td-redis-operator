@@ -1,0 +1,17 @@
+kind: RedisStandby
+metadata:
+  name: redis-standby-tom
+  namespace: redis
+spec:
+  app: standby-tom
+  capacity: 2048
+  dc: hz
+  env: demo
+  image: tongduncloud/redis-standby:1.0
+  monitorimage: tongduncloud/redis-exporter:1.0
+  netmode: ClusterIP
+  realname: sa
+  secret: "123"
+  sentinelimage: tongduncloud/sentinel-standby:0.8
+  storageclass: ""
+  vip: 172.17.128.8
