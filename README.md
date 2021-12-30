@@ -70,16 +70,19 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 <br>
 
-# Future plans support
+# Roadmap for future plans
 
-Support customization of service exposure ServiceType parameter.
-Cache node shrink scene logic optimization.
-Operator exception and branch handling.
-Supports customization of storage parameters.
-Support all kinds of back-end storage (hostPath/NFS/Ceph rbd/cephfs/public cloud storage...).
-Support major mainstream kubernets and virtual machine of public cloud.
-Open source the supporting redis web management platform.
-The web platform also supports monitoring curves.
+We will support the following features in the future:
+
+* Support customization of service exposure ServiceType parameter.
+* Cache node shrink scene logic optimization.
+* Operator exception and branch handling.
+* Supports customization of storage parameters.
+* Support all kinds of back-end storage (hostPath/NFS/Ceph rbd/cephfs/public cloud storage...).
+* Support major mainstream kubernets and virtual machine of public cloud.
+* Open source the supporting redis web management platform.
+* The web platform also supports monitoring curves.
+* ...
 
 
 # FAQ
