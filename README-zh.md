@@ -23,8 +23,8 @@
 
 <h1>项目介绍</h1>
 <p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">名称：td-redis-operator</p>
-<p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">语言： 纯go开发</p>
-<p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">定位： 完全基于云原生技术，实现资源生命周期管理、故障自愈、HA等</p>
+<p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">语言：Golang</p>
+<p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">定位：完全基于云原生技术，实现资源生命周期管理、故障自愈、HA等</p>
 <p> </p>
 <h1>工作原理</h1>
 <p><img width="848" src="https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png" height="500" alt=""></p>
