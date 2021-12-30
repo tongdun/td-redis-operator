@@ -65,7 +65,7 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 
 * 支持服务暴露serviceType参数自定义。
 * 缓存节点缩容逻辑优化。
-* 异常与分支处理。
+* 缓存异常与分支处理。
 * 支持存储参数的自定义。
 * 支持各类后端存储(hostPath/NFS/Ceph rbd/Cephfs/公有云存储…)。
 * 支持各大主流公有云主机/Kubernetes平台。
