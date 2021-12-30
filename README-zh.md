@@ -71,7 +71,7 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 * 支持各大主流公有云主机/Kubernetes平台。
 * 开源redis的web管理平台。
 * web平台支持监控曲线图。
-……
+* ……
 
 <br>
         
