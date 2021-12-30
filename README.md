@@ -35,7 +35,7 @@ Current scale：
 
 Principle description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on Kubernate.
-* Support two kinds of Redis instance management delivery, namely Redis active and standby and RedisCluster.
+* Support two kinds of Redis instance management delivery, namely Redis active and standby and Redis Cluster.
 
 <br>
 
