@@ -59,11 +59,27 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 
 <br>
 
+# 未来计划 Roadmap
+    
+我们将在未来支持如下特性：
 
+* 支持服务暴露serviceType参数自定义。
+* 缓存节点缩容逻辑优化。
+* 异常与分支处理。
+* 支持存储参数的自定义。
+* 支持各类后端存储(hostPath/NFS/Ceph rbd/Cephfs/公有云存储…)。
+* 支持各大主流公有云主机/Kubernetes平台。
+* 开源redis的web管理平台。
+* web平台支持监控曲线图。
+……
+
+<br>
         
 # AdminGuide
     
 点击查看：https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide
+    
+<br>
     
 # 常见问题
     
