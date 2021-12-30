@@ -54,16 +54,17 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
 $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/redis_standby.yaml
 ```
 <p>更多YAML文件详见<a href="https://github.com/tongdun/td-redis-operator/wiki/YAML部署">YAML部署文档</a>。</p>
-        
-<p> </p>
-        
-<h1>AdminGuide</h1>
-<p>点击查看：https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</p>
-        
+
 </div>
 
 <br>
 
+
+        
+# AdminGuide
+    
+点击查看：https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide
+    
 # 常见问题
     
 你可以<a href="https://github.com/tongdun/td-redis-operator/wiki/常见问题回答">点击这里查看常见问题集锦</a>。
