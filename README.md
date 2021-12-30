@@ -22,7 +22,7 @@ Current scale：
 # Introduction
 
 * Name: td-redis-operator
-* Language: pure go development
+* Language: Golang
 * Positioning: Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
 
 <a href="https://github.com/tongdun/td-redis-operator/wiki">Click here to view detailed information</a> about Introduction.
