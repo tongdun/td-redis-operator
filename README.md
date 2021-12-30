@@ -84,6 +84,7 @@ We will support the following features in the future:
 * The web platform also supports monitoring curves.
 * ...
 
+<br>
 
 # FAQ
 
