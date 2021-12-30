@@ -34,7 +34,7 @@ Current scale：
 ![td-redis-operator](https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png)
 
 Principle description:
-* Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on Kubernate.
+* Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on kubernetes.
 * Support two kinds of Redis instance management delivery, namely Redis active and standby and Redis Cluster.
 
 <br>
