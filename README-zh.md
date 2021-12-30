@@ -29,7 +29,7 @@
 <h1>工作原理</h1>
 <p><img width="848" src="https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png" height="500" alt=""></p>
 <p>原理描述：</p>
-<p>1.   基于Operator开源产品，完全在Kubernate上运维托管。 什么是Kubernetes Operator,  请<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">点击</a></p>
+<p>1.   基于Operator开源产品，完全在kubernetes上运维托管。 什么是Kubernetes Operator,  请<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">点击</a></p>
 <p>2.   支持两种Redis实例管理交付，即Redis主备和Redis Cluster</p>
 <p> </p>
 <h1>Introduction</h1>
