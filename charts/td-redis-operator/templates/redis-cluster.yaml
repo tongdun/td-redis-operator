@@ -18,5 +18,5 @@ spec:
   secret: {{ .Values.cluster.secret }}
   size: 3
   storageclass: ""
-  vip: 172.17.128.8
+  vip: 192.168.1.3
 {{- end }}

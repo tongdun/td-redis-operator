@@ -4,5 +4,5 @@ description: A Helm chart for tongdun redis operator
 version: "1"
 appVersion: "0.1.0"
 maintainers:
-  - name: Jiajia Wen
-    email: jiajia.wen@tongdun.net
+  - name: DoubleJ213
+    email: herowenjj@gmail.com

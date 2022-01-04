@@ -37,9 +37,6 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
-#      imagePullSecrets:
-#      - name: harbor-secret
-#      - name: registry-secret
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
