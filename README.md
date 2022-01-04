@@ -93,7 +93,6 @@ We will support the following features in the future:
 You can also seek help in other ways:
 * Issue: https://github.com/tongdun/td-redis-operator/issues
 * Wiki: https://github.com/tongdun/td-redis-operator/wiki
-* Email: gaosheng.liang1024@gmail.com / shijun.hou@tongdun.net
 
 <br>
 <br>
