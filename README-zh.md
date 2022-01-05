@@ -27,7 +27,7 @@
 <p style="margin-top: 15px; margin-bottom: 15px; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">定位：完全基于云原生技术，实现资源生命周期管理、故障自愈、HA等</p>
 <p> </p>
 <h1>工作原理</h1>
-<p><img width="848" src="https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png" height="500" alt=""></p>
+<p><img width="848" src="docs/imgs/td-redis-operator-arch.jpg" height="500" alt=""></p>
 <p>原理描述：</p>
 <p>1.   基于Operator开源产品，完全在kubernetes上运维托管。 什么是Kubernetes Operator,  请<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">点击</a></p>
 <p>2.   支持两种Redis实例管理交付，即Redis主备和Redis Cluster</p>
