@@ -31,7 +31,7 @@ Current scale：
 
 # Architecture
 
-![td-redis-operator](https://github.com/tongdun/td-redis-operator/blob/gaoshengL-patch-1/1.png)
+![td-redis-operator](docs/imgs/td-redis-operator-arch.jpg)
 
 Principle description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on kubernetes.
