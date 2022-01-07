@@ -85,9 +85,9 @@ func (lg *mysqlOperlogger) updateStatus(logId int64, status int) {
 }
 
 func (lg *mysqlOperlogger) getOperLogs(resouce string) ([]operlog, error) {
-	sql := fmt.Sprintf("select gmt_create,realname,resource,oper,status from %s where resource='%s'", lg.tab, resouce)
+	//sql := fmt.Sprintf("select gmt_create,realname,resource,oper,status from %s where resource='%s'", lg.tab, resouce)
 	operlogs := []operlog{}
-	rows, err := lg.conn.Query(sql)
+	rows, err := lg.conn.Query("select gmt_create,realname,resource,oper,status from ? where resource = ?",lg.tab, resouce)
 	if err != nil {
 		return []operlog{}, err
 	}
