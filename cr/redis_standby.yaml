@@ -1,3 +1,4 @@
+apiVersion: cache.tongdun.net/v1alpha1
 kind: RedisStandby
 metadata:
   name: redis-standby-tom
