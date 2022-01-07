@@ -1,3 +1,4 @@
+apiVersion: cache.tongdun.net/v1alpha1
 kind: RedisCluster
 metadata:
   name: redis-cluster-trump
