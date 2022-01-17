@@ -89,7 +89,7 @@ We will support the following features in the future:
 
 # Community group
 
-Welcome to our open source community group for detailed communication. Please scan the following QR code to join us:
+Welcome to our open source community wechat group for detailed communication. Please scan the following QR code to join us:
     
 ![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
 
