@@ -89,7 +89,7 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
     
 # 社区微信群
     
-欢迎加入我们的开源社区微信群，进行详细的沟通交流：
+欢迎扫码加入我们的开源社区微信群，进行详细的沟通交流：
     
 ![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
     
