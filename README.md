@@ -95,5 +95,13 @@ You can also seek help in other ways:
 * Wiki: https://github.com/tongdun/td-redis-operator/wiki
 
 <br>
+
+# Community wechat group
+
+Welcome to our open source community group for detailed communication. Scan the following QR code to join us:
+    
+![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
+
+<br>
 <br>
 
