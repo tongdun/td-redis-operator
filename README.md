@@ -84,6 +84,16 @@ We will support the following features in the future:
 * The web platform also supports monitoring curves.
 * ...
 
+
+<br>
+
+# Community group
+
+Welcome to our open source community group for detailed communication. Scan the following QR code to join us:
+    
+![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
+
+
 <br>
 
 # FAQ
@@ -94,13 +104,6 @@ You can also seek help in other ways:
 * Issue: https://github.com/tongdun/td-redis-operator/issues
 * Wiki: https://github.com/tongdun/td-redis-operator/wiki
 
-<br>
-
-# Community group
-
-Welcome to our open source community group for detailed communication. Scan the following QR code to join us:
-    
-![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
 
 <br>
 <br>
