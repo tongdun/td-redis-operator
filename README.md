@@ -96,7 +96,7 @@ You can also seek help in other ways:
 
 <br>
 
-# Community wechat group
+# Community group
 
 Welcome to our open source community group for detailed communication. Scan the following QR code to join us:
     
