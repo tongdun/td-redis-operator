@@ -85,6 +85,12 @@ $ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/red
     
 你可以<a href="https://github.com/tongdun/td-redis-operator/wiki/常见问题回答">点击这里查看常见问题集锦</a>，也可以<a href="https://github.com/tongdun/td-redis-operator/issues">点击这里给我们提交issue</a>。
 
+# 社区微信群
+    
+欢迎加入我们的开源社区微信群，进行详细的沟通交流：
+    
+![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
+    
 <br>
 <br>
 
