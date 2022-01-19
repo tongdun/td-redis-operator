@@ -1,25 +1,25 @@
 kubeconfig: ~/.kube/config
 namespace: redis
-standbyimage: registry.tongdun.me/db/redis-standby:0.8
-sentiimage: registry.tongdun.me/db/sentinel-standby:0.6
-clusterimage: registry.tongdun.me/db/redis-cluster:0.2
-proxyimage: registry.tongdun.me/db/predixy:1.0
+standbyimage: tongduncloud/redis-standby:0.8
+sentiimage: tongduncloud/sentinel-standby:0.6
+clusterimage: tongduncloud/redis-cluster:0.2
+proxyimage: tongduncloud/predixy:1.0
 redissecret: 123
-vip: 10.57.36.8
+vip: 10.0.0.1
 #storageclass:
 middlewares:
   - common
   #- luc
-luc: http://10.59.57.138:8088
-monitorimage: registry.tongdun.me/db/redis-exporter:1.0
+luc: http://10.0.0.1:8088
+monitorimage: tongduncloud/redis-exporter:1.0
 logger:
   loggertype: mysql
-  mysqladdr: 10.57.34.85:3306
+  mysqladdr: 10.0.0.1:3306
   mysqluser: dba
   mysqlpass: 123
   mysqldb: mon123
 mon:
-  ip: 10.57.34.85:3306
+  ip: 10.0.0.1:3306
   db: mon
   user: dba
   password: 123
