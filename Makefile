@@ -2,7 +2,7 @@ ROOT := redis-priv-operator
 #TARGETS := operator admin
 #TARGETS := admin
 TARGETS := operator
-REGISTRY := registry.tongdun.me
+REGISTRY := tongduncloud
 PROJECT := db
 VERSION := `date +%Y%m%d`-`git rev-parse --short=11 HEAD`
 LDFLAGS := `./hack/version.sh`
