@@ -19,7 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	internalinterfaces "redis-priv-operator/pkg/client/informers/internalinterfaces"
+	internalinterfaces "td-redis-operator/pkg/client/informers/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

@@ -11,9 +11,9 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
-	podutil "redis-priv-operator/third_party/kubernetes/pkg/api/v1/pod"
-	"redis-priv-operator/third_party/kubernetes/pkg/util/hash"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
+	podutil "td-redis-operator/third_party/kubernetes/pkg/api/v1/pod"
+	"td-redis-operator/third_party/kubernetes/pkg/util/hash"
 	"time"
 )
 

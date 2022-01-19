@@ -8,11 +8,11 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 	"net/http"
-	"redis-priv-operator/pkg/client/clientset"
-	. "redis-priv-operator/pkg/conf"
-	"redis-priv-operator/pkg/middlewares/common"
-	"redis-priv-operator/pkg/middlewares/luc"
-	"redis-priv-operator/pkg/template"
+	"td-redis-operator/pkg/client/clientset"
+	. "td-redis-operator/pkg/conf"
+	"td-redis-operator/pkg/middlewares/common"
+	"td-redis-operator/pkg/middlewares/luc"
+	"td-redis-operator/pkg/template"
 	"time"
 )
 

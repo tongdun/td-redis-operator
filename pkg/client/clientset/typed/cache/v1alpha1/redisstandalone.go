@@ -20,8 +20,8 @@ package v1alpha1
 
 import (
 	"context"
-	v1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
-	scheme "redis-priv-operator/pkg/client/clientset/scheme"
+	v1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
+	scheme "td-redis-operator/pkg/client/clientset/scheme"
 	"time"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"

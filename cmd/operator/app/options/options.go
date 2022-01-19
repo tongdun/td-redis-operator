@@ -8,10 +8,10 @@ import (
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
-	"redis-priv-operator/cmd/operator/app/config"
-	"redis-priv-operator/pkg/client/clientset"
-	extinformers "redis-priv-operator/pkg/client/informers"
-	"redis-priv-operator/pkg/template"
+	"td-redis-operator/cmd/operator/app/config"
+	"td-redis-operator/pkg/client/clientset"
+	extinformers "td-redis-operator/pkg/client/informers"
+	"td-redis-operator/pkg/template"
 )
 
 // Options defines running options of CI/CD for ML
@@ -80,7 +80,6 @@ func (opt *Options) Config() (*config.Config, error) {
 	configMapInformer := kubeInformerFactory.Core().V1().ConfigMaps()
 	statefulSetInformer := kubeInformerFactory.Apps().V1().StatefulSets()
 	deploymentInformer := kubeInformerFactory.Apps().V1().Deployments()
-	mysqlProxyInformer := extInformerFactory.Tdb().V1alpha1().MysqlProxies()
 	redisStandInformer := extInformerFactory.Cache().V1alpha1().RedisStandalones()
 	redisStandbyInformer := extInformerFactory.Cache().V1alpha1().RedisStandbies()
 	redisClusterInformer := extInformerFactory.Cache().V1alpha1().RedisClusters()
@@ -183,7 +182,6 @@ func (opt *Options) Config() (*config.Config, error) {
 		DeploymentInformer:  deploymentInformer,
 		LeaseInformer:       leaseInformer,
 
-		MysqlProxyInformer:      mysqlProxyInformer,
 		RedisStandaloneInformer: redisStandInformer,
 		RedisStandbyInformer:    redisStandbyInformer,
 		RedisClusterInformer:    redisClusterInformer,

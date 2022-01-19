@@ -19,7 +19,7 @@ limitations under the License.
 package internalinterfaces
 
 import (
-	clientset "redis-priv-operator/pkg/client/clientset"
+	clientset "td-redis-operator/pkg/client/clientset"
 	time "time"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"

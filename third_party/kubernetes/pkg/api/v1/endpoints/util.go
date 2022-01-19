@@ -24,9 +24,9 @@ import (
 	"hash"
 	"sort"
 
-	hashutil "redis-priv-operator/third_party/kubernetes/pkg/util/hash"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/types"
+	hashutil "td-redis-operator/third_party/kubernetes/pkg/util/hash"
 )
 
 // RepackSubsets takes a slice of EndpointSubset objects, expands it to the full

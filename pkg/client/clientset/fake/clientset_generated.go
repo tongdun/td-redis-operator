@@ -19,11 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "redis-priv-operator/pkg/client/clientset"
-	cachev1alpha1 "redis-priv-operator/pkg/client/clientset/typed/cache/v1alpha1"
-	fakecachev1alpha1 "redis-priv-operator/pkg/client/clientset/typed/cache/v1alpha1/fake"
-	tdbv1alpha1 "redis-priv-operator/pkg/client/clientset/typed/tdb/v1alpha1"
-	faketdbv1alpha1 "redis-priv-operator/pkg/client/clientset/typed/tdb/v1alpha1/fake"
+	clientset "td-redis-operator/pkg/client/clientset"
+	cachev1alpha1 "td-redis-operator/pkg/client/clientset/typed/cache/v1alpha1"
+	fakecachev1alpha1 "td-redis-operator/pkg/client/clientset/typed/cache/v1alpha1/fake"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -82,9 +80,4 @@ var _ clientset.Interface = &Clientset{}
 // CacheV1alpha1 retrieves the CacheV1alpha1Client
 func (c *Clientset) CacheV1alpha1() cachev1alpha1.CacheV1alpha1Interface {
 	return &fakecachev1alpha1.FakeCacheV1alpha1{Fake: &c.Fake}
-}
-
-// TdbV1alpha1 retrieves the TdbV1alpha1Client
-func (c *Clientset) TdbV1alpha1() tdbv1alpha1.TdbV1alpha1Interface {
-	return &faketdbv1alpha1.FakeTdbV1alpha1{Fake: &c.Fake}
 }

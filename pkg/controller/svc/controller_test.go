@@ -8,14 +8,14 @@ import (
 	"github.com/liubog2008/tester/pkg/data"
 	"github.com/liubog2008/tester/pkg/tester"
 	"github.com/stretchr/testify/require"
-	"redis-priv-operator/pkg/controller"
-	utiltesting "redis-priv-operator/pkg/utils/testing"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	kubeinformers "k8s.io/client-go/informers"
 	kubefake "k8s.io/client-go/kubernetes/fake"
 	kubetesting "k8s.io/client-go/testing"
 	"k8s.io/client-go/util/workqueue"
+	"td-redis-operator/pkg/controller"
+	utiltesting "td-redis-operator/pkg/utils/testing"
 )
 
 func TestNewService(t *testing.T) {

@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/pflag"
 	"k8s.io/klog"
 	"os"
-	"redis-priv-operator/cmd/operator/app"
+	"td-redis-operator/cmd/operator/app"
 )
 
 func init() {

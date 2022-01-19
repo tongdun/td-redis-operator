@@ -11,12 +11,12 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/klog"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
-	"redis-priv-operator/pkg/logger"
-	. "redis-priv-operator/pkg/redis"
-	podutil "redis-priv-operator/third_party/kubernetes/pkg/api/v1/pod"
 	"strconv"
 	"strings"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
+	"td-redis-operator/pkg/logger"
+	. "td-redis-operator/pkg/redis"
+	podutil "td-redis-operator/third_party/kubernetes/pkg/api/v1/pod"
 )
 
 type NodeResource struct {

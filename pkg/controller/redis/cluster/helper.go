@@ -11,9 +11,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/klog"
 	"os/exec"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
 	"strconv"
 	"strings"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
 	"time"
 )
 

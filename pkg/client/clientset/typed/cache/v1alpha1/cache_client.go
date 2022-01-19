@@ -19,8 +19,8 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
-	"redis-priv-operator/pkg/client/clientset/scheme"
+	v1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
+	"td-redis-operator/pkg/client/clientset/scheme"
 
 	rest "k8s.io/client-go/rest"
 )

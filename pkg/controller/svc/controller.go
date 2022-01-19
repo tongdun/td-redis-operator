@@ -3,6 +3,7 @@ package svc
 
 import (
 	"fmt"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
@@ -17,12 +18,11 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/klog"
-	cacheinformers "redis-priv-operator/pkg/client/informers/cache/v1alpha1"
-	cachelisters "redis-priv-operator/pkg/client/listers/cache/v1alpha1"
+	cacheinformers "td-redis-operator/pkg/client/informers/cache/v1alpha1"
+	cachelisters "td-redis-operator/pkg/client/listers/cache/v1alpha1"
 
-	"redis-priv-operator/pkg/apis/tdb/v1alpha1"
-	"redis-priv-operator/pkg/controller"
-	endpointutil "redis-priv-operator/third_party/kubernetes/pkg/controller/util/endpoint"
+	"td-redis-operator/pkg/controller"
+	endpointutil "td-redis-operator/third_party/kubernetes/pkg/controller/util/endpoint"
 )
 
 // var endpointUpdatesBatchPeriod = 1 * time.Second
@@ -70,7 +70,7 @@ func NewController(opt *ControllerOptions) *Controller {
 	broadcaster := record.NewBroadcaster()
 	broadcaster.StartLogging(klog.Infof)
 	broadcaster.StartRecordingToSink(&v1core.EventSinkImpl{Interface: opt.KubeClient.CoreV1().Events("")})
-	recorder := broadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: "redis-priv-operator"})
+	recorder := broadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: "td-redis-operator"})
 
 	c := &Controller{
 		kubeClient: opt.KubeClient,

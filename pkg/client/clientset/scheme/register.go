@@ -19,8 +19,7 @@ limitations under the License.
 package scheme
 
 import (
-	cachev1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
-	tdbv1alpha1 "redis-priv-operator/pkg/apis/tdb/v1alpha1"
+	cachev1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -34,7 +33,6 @@ var Codecs = serializer.NewCodecFactory(Scheme)
 var ParameterCodec = runtime.NewParameterCodec(Scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
 	cachev1alpha1.AddToScheme,
-	tdbv1alpha1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

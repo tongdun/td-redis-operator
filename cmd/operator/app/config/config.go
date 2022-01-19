@@ -7,11 +7,10 @@ import (
 	coordinformers "k8s.io/client-go/informers/coordination/v1"
 	coreinformers "k8s.io/client-go/informers/core/v1"
 	"k8s.io/client-go/kubernetes"
-	"redis-priv-operator/pkg/client/clientset"
-	extinformers "redis-priv-operator/pkg/client/informers"
-	redisinformers "redis-priv-operator/pkg/client/informers/cache/v1alpha1"
-	tdbinformers "redis-priv-operator/pkg/client/informers/tdb/v1alpha1"
-	"redis-priv-operator/pkg/template"
+	"td-redis-operator/pkg/client/clientset"
+	extinformers "td-redis-operator/pkg/client/informers"
+	redisinformers "td-redis-operator/pkg/client/informers/cache/v1alpha1"
+	"td-redis-operator/pkg/template"
 )
 
 // Config defines operator config
@@ -50,9 +49,6 @@ type Config struct {
 
 	// LeaseInformer defines informer for lease
 	LeaseInformer coordinformers.LeaseInformer
-
-	// MysqlProxyInformer defines mysql proxy informer
-	MysqlProxyInformer tdbinformers.MysqlProxyInformer
 
 	// RedisStandaloneInformer defines redis standalone informer
 	RedisStandaloneInformer redisinformers.RedisStandaloneInformer

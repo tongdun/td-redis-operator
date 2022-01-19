@@ -12,8 +12,8 @@ import (
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
-	"redis-priv-operator/third_party/kubernetes/pkg/util/hash"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
+	"td-redis-operator/third_party/kubernetes/pkg/util/hash"
 )
 
 func (c *Controller) syncRedisStandalone(key string) error {

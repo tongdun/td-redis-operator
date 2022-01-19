@@ -22,9 +22,9 @@ function cleanup {
 trap cleanup EXIT
 
 #EXT_APIS_PKG=${ROOT_PATH#"$GOPATH/src/"}/pkg/apis
-EXT_APIS_PKG=redis-priv-operator/pkg/apis
+EXT_APIS_PKG=td-redis-operator/pkg/apis
 #OUTPUT_PKG=${ROOT_PATH#"$GOPATH/src/"}/pkg/client
-OUTPUT_PKG=redis-priv-operator/pkg/client
+OUTPUT_PKG=td-redis-operator/pkg/client
 # apps:v1,v2 othergroup:v1alpha1,v1alpha2
 GROUP_VERSIONS="cache:v1alpha1"
 

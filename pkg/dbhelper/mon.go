@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	. "redis-priv-operator/pkg/conf"
-	"redis-priv-operator/pkg/logger"
-	. "redis-priv-operator/pkg/redis"
+	. "td-redis-operator/pkg/conf"
+	"td-redis-operator/pkg/logger"
+	. "td-redis-operator/pkg/redis"
 )
 
 var mon *sql.DB

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"sync"
 
-	"redis-priv-operator/pkg/client/clientset"
-	cacheinformers "redis-priv-operator/pkg/client/informers/cache/v1alpha1"
-	cachelisters "redis-priv-operator/pkg/client/listers/cache/v1alpha1"
-	"redis-priv-operator/pkg/controller"
-	"redis-priv-operator/pkg/template"
+	"td-redis-operator/pkg/client/clientset"
+	cacheinformers "td-redis-operator/pkg/client/informers/cache/v1alpha1"
+	cachelisters "td-redis-operator/pkg/client/listers/cache/v1alpha1"
+	"td-redis-operator/pkg/controller"
+	"td-redis-operator/pkg/template"
 
 	corev1 "k8s.io/api/core/v1"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -105,7 +105,7 @@ func NewController(opt *ControllerOptions) *Controller {
 	broadcaster := record.NewBroadcaster()
 	broadcaster.StartLogging(klog.Infof)
 	broadcaster.StartRecordingToSink(&v1core.EventSinkImpl{Interface: opt.KubeClient.CoreV1().Events("")})
-	recorder := broadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: "redis-priv-operator"})
+	recorder := broadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: "td-redis-operator"})
 
 	c := &Controller{
 		kubeClient: opt.KubeClient,

@@ -4,7 +4,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"io"
 	"os"
-	. "redis-priv-operator/pkg/conf"
+	. "td-redis-operator/pkg/conf"
 )
 
 func init() {

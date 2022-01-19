@@ -7,7 +7,7 @@ import (
 	apiequality "k8s.io/apimachinery/pkg/api/equality"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/klog"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
 )
 
 var (

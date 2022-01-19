@@ -22,13 +22,13 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"reflect"
 
-	podutil "redis-priv-operator/third_party/kubernetes/pkg/api/v1/pod"
 	v1 "k8s.io/api/core/v1"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/apimachinery/pkg/util/sets"
 	v1listers "k8s.io/client-go/listers/core/v1"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
+	podutil "td-redis-operator/third_party/kubernetes/pkg/api/v1/pod"
 )
 
 // EndpointsMatch is a type of function that returns true if pod endpoints match.

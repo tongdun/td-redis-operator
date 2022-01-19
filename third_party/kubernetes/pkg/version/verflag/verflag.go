@@ -24,7 +24,7 @@ import (
 	"strconv"
 
 	flag "github.com/spf13/pflag"
-	"redis-priv-operator/pkg/version"
+	"td-redis-operator/pkg/version"
 )
 
 type versionValue int

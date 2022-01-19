@@ -10,7 +10,7 @@ replicaCount: 1
 registry: tongduncloud
 
 image:
-  name: redis-priv-operator:20211224-4924aaee645
+  name: td-redis-operator:20211224-4924aaee645
   pullPolicy: IfNotPresent
 
 cluster:

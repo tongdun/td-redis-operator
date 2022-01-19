@@ -19,12 +19,11 @@ limitations under the License.
 package informers
 
 import (
-	clientset "redis-priv-operator/pkg/client/clientset"
-	informerscache "redis-priv-operator/pkg/client/informers/cache"
-	internalinterfaces "redis-priv-operator/pkg/client/informers/internalinterfaces"
-	tdb "redis-priv-operator/pkg/client/informers/tdb"
 	reflect "reflect"
 	sync "sync"
+	clientset "td-redis-operator/pkg/client/clientset"
+	informerscache "td-redis-operator/pkg/client/informers/cache"
+	internalinterfaces "td-redis-operator/pkg/client/informers/internalinterfaces"
 	time "time"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -174,13 +173,8 @@ type SharedInformerFactory interface {
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
 	Cache() informerscache.Interface
-	Tdb() tdb.Interface
 }
 
 func (f *sharedInformerFactory) Cache() informerscache.Interface {
 	return informerscache.New(f, f.namespace, f.tweakListOptions)
-}
-
-func (f *sharedInformerFactory) Tdb() tdb.Interface {
-	return tdb.New(f, f.namespace, f.tweakListOptions)
 }

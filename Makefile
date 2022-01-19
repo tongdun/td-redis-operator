@@ -1,4 +1,4 @@
-ROOT := redis-priv-operator
+ROOT := td-redis-operator
 #TARGETS := operator admin
 #TARGETS := admin
 TARGETS := operator
@@ -43,14 +43,14 @@ container: codegen
 				--ldflags "$(LDFLAGS)"                                       \
 				./cmd/$${target};                                            \
 		docker build                                                         \
-			-t $(REGISTRY)/$(PROJECT)/redis-priv-$${target}:$(VERSION)      \
+			-t $(REGISTRY)/$(PROJECT)/td-redis-$${target}:$(VERSION)      \
 			-f $(PWD)/build/$${target}/Dockerfile .;                         \
 	done
 
 push:
 	@for target in $(TARGETS); do                                       \
 		docker push                                                     \
-			$(REGISTRY)/$(PROJECT)/redis-priv-$${target}:$(VERSION);   \
+			$(REGISTRY)/$(PROJECT)/td-redis-$${target}:$(VERSION);   \
 	done
 
 deploy:

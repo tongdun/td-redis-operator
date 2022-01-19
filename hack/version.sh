@@ -7,7 +7,7 @@ set -o nounset
 set -o pipefail
 
 ROOT=$(dirname "${BASH_SOURCE[0]}")/..
-GO_PACKAGE="redis-priv-operator"
+GO_PACKAGE="td-redis-operator"
 
 getVersion() {
   if [[ '$Format:%%$' == "%" ]]; then

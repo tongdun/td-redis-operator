@@ -7,8 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
-	"redis-priv-operator/pkg/conf"
-	. "redis-priv-operator/pkg/web"
+	"td-redis-operator/pkg/conf"
+	. "td-redis-operator/pkg/web"
 	"time"
 )
 

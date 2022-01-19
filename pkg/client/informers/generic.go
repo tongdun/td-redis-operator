@@ -20,8 +20,7 @@ package informers
 
 import (
 	"fmt"
-	v1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
-	tdbv1alpha1 "redis-priv-operator/pkg/apis/tdb/v1alpha1"
+	v1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
@@ -60,10 +59,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cache().V1alpha1().RedisStandalones().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("redisstandbies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cache().V1alpha1().RedisStandbies().Informer()}, nil
-
-		// Group=tdb.tongdun.net, Version=v1alpha1
-	case tdbv1alpha1.SchemeGroupVersion.WithResource("mysqlproxies"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Tdb().V1alpha1().MysqlProxies().Informer()}, nil
 
 	}
 

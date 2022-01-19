@@ -20,10 +20,10 @@ package v1alpha1
 
 import (
 	"context"
-	cachev1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
-	clientset "redis-priv-operator/pkg/client/clientset"
-	internalinterfaces "redis-priv-operator/pkg/client/informers/internalinterfaces"
-	v1alpha1 "redis-priv-operator/pkg/client/listers/cache/v1alpha1"
+	cachev1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
+	clientset "td-redis-operator/pkg/client/clientset"
+	internalinterfaces "td-redis-operator/pkg/client/informers/internalinterfaces"
+	v1alpha1 "td-redis-operator/pkg/client/listers/cache/v1alpha1"
 	time "time"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"

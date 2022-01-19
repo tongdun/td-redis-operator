@@ -19,8 +19,8 @@ limitations under the License.
 package cache
 
 import (
-	v1alpha1 "redis-priv-operator/pkg/client/informers/cache/v1alpha1"
-	internalinterfaces "redis-priv-operator/pkg/client/informers/internalinterfaces"
+	v1alpha1 "td-redis-operator/pkg/client/informers/cache/v1alpha1"
+	internalinterfaces "td-redis-operator/pkg/client/informers/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

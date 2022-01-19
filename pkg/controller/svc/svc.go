@@ -13,9 +13,9 @@ import (
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog"
-	"redis-priv-operator/pkg/apis/cache/v1alpha1"
-	endpointsutil "redis-priv-operator/third_party/kubernetes/pkg/api/v1/endpoints"
-	podutil "redis-priv-operator/third_party/kubernetes/pkg/api/v1/pod"
+	"td-redis-operator/pkg/apis/cache/v1alpha1"
+	endpointsutil "td-redis-operator/third_party/kubernetes/pkg/api/v1/endpoints"
+	podutil "td-redis-operator/third_party/kubernetes/pkg/api/v1/pod"
 )
 
 func (c *Controller) syncService(key string) error {

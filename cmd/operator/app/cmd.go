@@ -6,13 +6,12 @@ import (
 	"github.com/spf13/pflag"
 	"k8s.io/component-base/version/verflag"
 	"k8s.io/klog"
-	"redis-priv-operator/cmd/operator/app/config"
-	"redis-priv-operator/cmd/operator/app/options"
-	"redis-priv-operator/pkg/controller/mysqlproxy"
-	"redis-priv-operator/pkg/controller/redis/cluster"
-	"redis-priv-operator/pkg/controller/redis/masterslave"
-	"redis-priv-operator/pkg/controller/redis/standalone"
-	"redis-priv-operator/pkg/controller/svc"
+	"td-redis-operator/cmd/operator/app/config"
+	"td-redis-operator/cmd/operator/app/options"
+	"td-redis-operator/pkg/controller/redis/cluster"
+	"td-redis-operator/pkg/controller/redis/masterslave"
+	"td-redis-operator/pkg/controller/redis/standalone"
+	"td-redis-operator/pkg/controller/svc"
 )
 
 // NewCommand returns app command
@@ -76,28 +75,6 @@ func newServiceController(cfg *config.Config) *svc.Controller {
 	}
 	c := svc.NewController(opt)
 
-	return c
-}
-
-func newMysqlProxyController(cfg *config.Config) *mysqlproxy.Controller {
-	opt := &mysqlproxy.ControllerOptions{
-		KubeClient: cfg.KubeClient,
-		ExtClient:  cfg.ExtClient,
-
-		PodInformer:         cfg.PodInformer,
-		ServiceInformer:     cfg.ServiceInformer,
-		ConfigMapInformer:   cfg.ConfigMapInformer,
-		EndpointsInformer:   cfg.EndpointsInformer,
-		StatefulSetInformer: cfg.StatefulSetInformer,
-		MysqlProxyInformer:  cfg.MysqlProxyInformer,
-
-		StatefulSetTemplate: cfg.StatefulSetTemplate,
-		ServiceTemplate:     cfg.ServiceTemplate,
-		ConfigMapTemplate:   cfg.ConfigMapTemplate,
-
-		MysqlSecret: cfg.MysqlSecret,
-	}
-	c := mysqlproxy.NewController(opt)
 	return c
 }
 

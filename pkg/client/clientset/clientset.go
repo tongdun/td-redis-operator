@@ -20,8 +20,7 @@ package clientset
 
 import (
 	"fmt"
-	cachev1alpha1 "redis-priv-operator/pkg/client/clientset/typed/cache/v1alpha1"
-	tdbv1alpha1 "redis-priv-operator/pkg/client/clientset/typed/tdb/v1alpha1"
+	cachev1alpha1 "td-redis-operator/pkg/client/clientset/typed/cache/v1alpha1"
 
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
@@ -31,7 +30,6 @@ import (
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
 	CacheV1alpha1() cachev1alpha1.CacheV1alpha1Interface
-	TdbV1alpha1() tdbv1alpha1.TdbV1alpha1Interface
 }
 
 // Clientset contains the clients for groups. Each group has exactly one
@@ -39,17 +37,11 @@ type Interface interface {
 type Clientset struct {
 	*discovery.DiscoveryClient
 	cacheV1alpha1 *cachev1alpha1.CacheV1alpha1Client
-	tdbV1alpha1   *tdbv1alpha1.TdbV1alpha1Client
 }
 
 // CacheV1alpha1 retrieves the CacheV1alpha1Client
 func (c *Clientset) CacheV1alpha1() cachev1alpha1.CacheV1alpha1Interface {
 	return c.cacheV1alpha1
-}
-
-// TdbV1alpha1 retrieves the TdbV1alpha1Client
-func (c *Clientset) TdbV1alpha1() tdbv1alpha1.TdbV1alpha1Interface {
-	return c.tdbV1alpha1
 }
 
 // Discovery retrieves the DiscoveryClient
@@ -77,10 +69,6 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
-	cs.tdbV1alpha1, err = tdbv1alpha1.NewForConfig(&configShallowCopy)
-	if err != nil {
-		return nil, err
-	}
 
 	cs.DiscoveryClient, err = discovery.NewDiscoveryClientForConfig(&configShallowCopy)
 	if err != nil {
@@ -94,7 +82,6 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 func NewForConfigOrDie(c *rest.Config) *Clientset {
 	var cs Clientset
 	cs.cacheV1alpha1 = cachev1alpha1.NewForConfigOrDie(c)
-	cs.tdbV1alpha1 = tdbv1alpha1.NewForConfigOrDie(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClientForConfigOrDie(c)
 	return &cs
@@ -104,7 +91,6 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
 	cs.cacheV1alpha1 = cachev1alpha1.New(c)
-	cs.tdbV1alpha1 = tdbv1alpha1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
 	return &cs

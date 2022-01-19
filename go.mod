@@ -1,4 +1,4 @@
-module redis-priv-operator
+module td-redis-operator
 
 go 1.13
 

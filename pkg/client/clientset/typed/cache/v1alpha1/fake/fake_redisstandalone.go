@@ -20,7 +20,7 @@ package fake
 
 import (
 	"context"
-	v1alpha1 "redis-priv-operator/pkg/apis/cache/v1alpha1"
+	v1alpha1 "td-redis-operator/pkg/apis/cache/v1alpha1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
