@@ -93,6 +93,7 @@ Welcome to our open source community `WeChat` group for detailed communication. 
     
 ![td-redis-operator](docs/imgs/wechatqrcode.jpg)   
 
+(QR codes are updated irregularly)
 
 <br>
 
