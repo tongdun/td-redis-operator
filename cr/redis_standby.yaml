@@ -13,6 +13,6 @@ spec:
   netmode: ClusterIP
   realname: sa
   secret: "123"
-  sentinelimage: tongduncloud/sentinel-standby:0.8
+  sentinelimage: tongduncloud/sentinel-standby:latest
   storageclass: ""
   vip: 172.17.128.8
