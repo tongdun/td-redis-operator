@@ -33,4 +33,4 @@ standby:
 #  appName: cluster-tom
   image: redis-standby:1.0
   monitorimage: redis-exporter:1.0
-  sentinelimage: sentinel-standby:0.8
+  sentinelimage: sentinel-standby:latest
