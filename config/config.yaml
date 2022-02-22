@@ -1,7 +1,7 @@
 kubeconfig: ~/.kube/config
 namespace: redis
 standbyimage: tongduncloud/redis-standby:0.8
-sentiimage: tongduncloud/sentinel-standby:0.6
+sentiimage: tongduncloud/sentinel-standby:latest
 clusterimage: tongduncloud/redis-cluster:0.2
 proxyimage: tongduncloud/predixy:1.0
 redissecret: 123
