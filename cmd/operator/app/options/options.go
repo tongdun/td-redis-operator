@@ -84,10 +84,7 @@ func (opt *Options) Config() (*config.Config, error) {
 	redisStandbyInformer := extInformerFactory.Cache().V1alpha1().RedisStandbies()
 	redisClusterInformer := extInformerFactory.Cache().V1alpha1().RedisClusters()
 
-	statefulSetTemp, err := template.NewTemplate("/statefulset.tmpl")
-	if err != nil {
-		return nil, fmt.Errorf("cant' create statefulset template")
-	}
+	
 
 	redisStandaloneStatefulsetTemp, err := template.NewTemplate("/statefulset_redis_standalone.tmpl")
 	if err != nil {
