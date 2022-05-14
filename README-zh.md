@@ -49,9 +49,9 @@ $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator
 <p>除了使用helm部署外，你也可以使用kubectl命令部署：</p>
 
 ```
-$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/deploy/deploy.yaml     
-$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/redis_cluster.yaml
-$ kubectl apply -f https://github.com/tongdun/td-redis-operator/tree/main/cr/redis_standby.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/main/deploy/deploy.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/main/cr/redis_cluster.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/main/cr/redis_standby.yaml
 ```
 <p>更多YAML文件详见<a href="https://github.com/tongdun/td-redis-operator/wiki/YAML部署">YAML部署文档</a>。</p>
 
