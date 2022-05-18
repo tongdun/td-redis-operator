@@ -24,7 +24,14 @@ $ kubectl create namespace redis # If you have already created it, please skip.
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator
 or
 $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # will be installed into the default namespace
+
+
+$ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator --set type=cluster
+# You can use --set type=cluster or type=standby to choice which kind of redis to be installed .
+# By default both of them
 ```
+_See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example)._
+
 
 ```
 # kubectl  get pod

@@ -8,15 +8,30 @@ To learn more about the release, try:
   $ helm get [command] {{ .Release.Name }} -n {{ .Release.Namespace }}
 
 Now you can enjoy your redis cluster !
-
+{{ if eq .Values.type "cluster"}}
 #Kind: RedisCluster
 You can get the redis service by using command such as:
-  $ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
+
+you secret is: {{ .Values.cluster.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+{{ else if eq .Values.type "standby" }}
+#Kind: RedisStandby
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
+
+you secret is: {{ .Values.standby.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+
+{{ else }}
+#Kind: RedisCluster
+You can get the redis service by using command such as:
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
 
 you secret is: {{ .Values.cluster.secret }}
 
 #Kind: RedisStandby
-  $ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
 
 you secret is: {{ .Values.standby.secret }}
 #redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+{{ end }}

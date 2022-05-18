@@ -1,0 +1,24 @@
+{{- if or (eq .Values.type "cluster") (eq .Values.type "all") -}}
+{{- if .Capabilities.APIVersions.Has "cache.tongdun.net/v1alpha1" -}}
+apiVersion: cache.tongdun.net/v1alpha1
+kind: RedisCluster
+metadata:
+  name: redis-{{ .Values.cluster.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+spec:
+  app: {{ .Values.cluster.name }}
+  capacity: 32768
+  dc: hz
+  env: {{ .Values.cluster.env }}
+  image: {{ .Values.registry }}/{{ .Values.cluster.image }}
+  monitorimage: {{ .Values.registry }}/{{ .Values.cluster.monitorimage }}
+  netmode: NodePort
+  proxyimage: {{ .Values.registry }}/{{ .Values.cluster.proxyimage }}
+  proxysecret: "123"
+  realname: demo
+  secret: {{ .Values.cluster.secret }}
+  size: 3
+  storageclass: ""
+  vip: 192.168.1.3
+{{- end }}
+{{- end }}
