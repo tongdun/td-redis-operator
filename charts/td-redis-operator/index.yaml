@@ -8,3 +8,4 @@ entries:
     - https://github.com/tongdun/td-redis-operator/releases/download/v0.1.0/td-redis-operator-0.1.0.tgz
     version: 0.1.0
     description: tongdun redis operator
+    name: td-redis-operator
