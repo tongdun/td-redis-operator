@@ -13,7 +13,7 @@ registry: tongduncloud
 type: all
 
 image:
-  name: redis-priv-operator:20211229-4924aaee645
+  name: td-redis-operator:20211229-4924aaee645
   pullPolicy: IfNotPresent
 
 cluster:
