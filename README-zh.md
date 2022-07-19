@@ -65,10 +65,8 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 
 * 支持服务暴露serviceType参数自定义。
 * 缓存节点缩容逻辑优化。
-* 缓存异常与分支处理。
 * 支持存储参数的自定义。
 * 支持各类后端存储(hostPath/NFS/Ceph rbd/Cephfs/公有云存储…)。
-* 支持各大主流公有云主机/Kubernetes平台。
 * 开源redis的web管理平台。
 * web平台支持监控曲线图。
 * ……
