@@ -69,7 +69,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 * 支持各类后端存储(hostPath/NFS/Ceph rbd/Cephfs/公有云存储…)。
 * 开源redis的web管理平台。
 * web平台支持监控曲线图。
-* ……
+* …
 
 <br>
         
