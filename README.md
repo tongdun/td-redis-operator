@@ -97,7 +97,7 @@ Welcome to our open source community `WeChat` group for detailed communication. 
 
 # Wiki
 
-Wiki: <a href="https://github.com/tongdun/td-redis-operator/wiki">https://github.com/tongdun/td-redis-operator/wiki</a>
+<a href="https://github.com/tongdun/td-redis-operator/wiki">https://github.com/tongdun/td-redis-operator/wiki</a>
 
 
 <br>
