@@ -92,7 +92,9 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 ![td-redis-operator](docs/imgs/wechatqrcode.jpg)  
     
 (申请的时候备注填写“td-redis-operator”字符。)
+   
     
+<br>
     
 # Wiki
     
