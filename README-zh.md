@@ -96,7 +96,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
     
 <br>
     
-# Wiki
+# Wiki文档
     
 [https://github.com/tongdun/td-redis-operator/wiki](https://github.com/tongdun/td-redis-operator/wiki/首页)
 
