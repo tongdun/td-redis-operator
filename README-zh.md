@@ -98,7 +98,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
     
 # Wiki
     
-    <a href="https://github.com/tongdun/td-redis-operator/wiki/首页">https://github.com/tongdun/td-redis-operator/wiki</a>
+[https://github.com/tongdun/td-redis-operator/wiki](https://github.com/tongdun/td-redis-operator/wiki/首页)
 
 
 <br>
