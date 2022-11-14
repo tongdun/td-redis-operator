@@ -2,7 +2,7 @@
 ![td-redis-operator](docs/imgs/td-redis-operator-logo.jpg)
 
 
-Switch Languages: <a href="README.md">English Documents</a>  |  <a href="README-zh.md">中文文档</a>
+<a href="README.md">English Documents</a>  |  <a href="README-zh.md">中文文档</a>
 
 <br>
 
