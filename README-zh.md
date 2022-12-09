@@ -2,7 +2,7 @@
 ![td-redis-operator](docs/imgs/td-redis-operator-logo.jpg)
 
 
-切换语言：<a href="README-zh.md">中文文档</a>  |  <a href="README.md">English Documents</a>
+<a href="README-zh.md">中文文档</a>  |  <a href="README.md">English Documents</a>
 
 <br>
 
@@ -10,7 +10,7 @@
     <div class="iteye-blog-content-contain" style="font-size: 14px;">
 <h1>项目背景</h1>
 <p style="font-size: 14px;">
-&nbsp;&nbsp;&nbsp;同盾科技作为中国第三方智能风控与决策服务的头部提供商，日均处理决策请求高达百亿次。因此在同盾的主体数据存储基础架构中，大量使用Redis做为缓存组件。在业务高峰时期，集群实际部署高达千余Redis实例，这势必对DBA运维管控带来极大挑战。2018年，集团推动无状态应用全面容器化，结合云原生技术的缓存云产品开始在数据存储和云原生团队内部酝酿落地 </p>
+&nbsp;&nbsp;&nbsp;<a href="https://www.tongdun.net">同盾科技</a>作为中国第三方智能风控与决策服务的头部提供商，日均处理决策请求高达百亿次。因此在同盾的主体数据存储基础架构中，大量使用Redis做为缓存组件。在业务高峰时期，集群实际部署高达千余Redis实例，这势必对DBA运维管控带来极大挑战。2018年，集团推动无状态应用全面容器化，结合云原生技术的缓存云产品开始在数据存储和云原生团队内部酝酿落地 </p>
 <p style="font-size: 14px;">
 &nbsp;&nbsp;&nbsp;td-redis-operator第一版本可追溯到2018年，此次外部开源的版本为第2版，开发时间从2018年7月份一直持续到现在，目前同盾两地双中心的Redis集群全部部署在超大规模的Kubernetes上。
 </p>
@@ -92,7 +92,15 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 ![td-redis-operator](docs/imgs/wechatqrcode.jpg)  
     
 (申请的时候备注填写“td-redis-operator”字符。)
+   
     
+<br>
+    
+# Wiki文档
+    
+[https://github.com/tongdun/td-redis-operator/wiki](https://github.com/tongdun/td-redis-operator/wiki/首页)
+
+
 <br>
 <br>
 
