@@ -13,25 +13,33 @@ Now you can enjoy your redis cluster !
 You can get the redis service by using command such as:
   $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
 
-you secret is: {{ .Values.cluster.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+you secret is: {{ .Values.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.secret }}
 {{ else if eq .Values.type "standby" }}
 #Kind: RedisStandby
   $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
 
-you secret is: {{ .Values.standby.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+you secret is: {{ .Values.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.secret }}
 
-{{ else }}
+{{ else if eq .Values.type "standby"}}
 #Kind: RedisCluster
 You can get the redis service by using command such as:
   $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
 
-you secret is: {{ .Values.cluster.secret }}
+you secret is: {{ .Values.secret }}
 
 #Kind: RedisStandby
   $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
 
-you secret is: {{ .Values.standby.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.standby.secret }}
+you secret is: {{ .Values.secret }}
+#redis-cli -h $serviceIp -a {{ .Values.secret }}
+
+{{ else if eq .Values.type "manager"}}
+
+#Now you can access the td-redis-manager dashboard by visiting :
+$ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.manager.name }} -o jsonpath='{.spec.clusterIP}':8088
+
+default secret is: {{ .Values.secret }}
+
 {{ end }}

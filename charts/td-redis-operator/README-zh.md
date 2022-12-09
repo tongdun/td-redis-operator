@@ -27,8 +27,9 @@ $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # 安装到def
 
 
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator --set type=cluster
-# 使用 --set type=cluster or type=standby 选择你需要安装的redis模式 .
-# 默认两种模式都会安装
+# 使用 --set type=cluster or type=standby 选择你需要安装的redis模式.
+# 使用 --set type=manager 安装 td-redis-manager控制台
+# 默认 安装cluster/standby redis集群，同时安装控制台
 ```
 
 更多关于 [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example).
