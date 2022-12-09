@@ -11,10 +11,10 @@ spec:
   dc: hz
   env: {{ .Values.standby.env }}
   image: {{ .Values.registry }}/{{ .Values.standby.image }}
-  monitorimage: {{ .Values.registry }}/{{ .Values.standby.monitorimage }}
+  monitorimage: {{ .Values.registry }}/{{ .Values.monitorimage }}
   netmode: NodePort
   realname: sa
-  secret: {{ .Values.standby.secret }}
+  secret: {{ .Values.secret }}
   sentinelimage: {{ .Values.registry }}/{{ .Values.standby.sentinelimage }}
   storageclass: ""
   vip: 192.168.1.3

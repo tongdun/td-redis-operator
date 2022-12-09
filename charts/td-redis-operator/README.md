@@ -28,10 +28,11 @@ $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # will be inst
 
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator --set type=cluster
 # You can use --set type=cluster or type=standby to choice which kind of redis to be installed .
-# By default both of them
+# use --set type=manager to install the dashboard of td-redis-manager
+# By default. cluster/standby redis are installed, and the dashboard is installed at the same time
 ```
-_See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example)._
 
+_See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example)._
 
 ```
 # kubectl  get pod

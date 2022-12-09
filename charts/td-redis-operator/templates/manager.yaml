@@ -1,0 +1,119 @@
+{{- if or (eq .Values.type "manager") (eq .Values.type "all") -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: redis-admin
+rules:
+  - apiGroups:
+      - '*'
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - nonResourceURLs:
+      - '*'
+    verbs:
+      - '*'
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: redis-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: redis-admin
+subjects:
+  - kind: ServiceAccount
+    name: redis-admin
+    namespace: {{ default .Values.namespace .Release.Namespace }}
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: redis-admin
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.manager.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+data:
+  config.yaml: |
+    namespace: {{ default .Values.namespace .Release.Namespace }}
+    standbyimage: {{ .Values.registry }}/{{ .Values.standby.image }}
+    sentiimage: {{ .Values.registry }}/{{ .Values.standby.sentinelimage }}
+    clusterimage: {{ .Values.registry }}/{{ .Values.cluster.image }}
+    proxyimage: {{ .Values.registry }}/{{ .Values.cluster.proxyimage }}
+    redissecret: {{ .Values.secret }}
+    vip: 192.168.0.1
+    monitorimage: {{ .Values.registry }}/{{ .Values.monitorimage }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.manager.name }}
+  name: {{ .Values.manager.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+spec:
+  replicas: {{ .Values.manager.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.manager.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.manager.name }}
+    spec:
+      containers:
+        - command:
+            - /app/admin
+            - --configdir=/app/config
+          image: {{ .Values.registry }}/{{ .Values.manager.image }}
+          imagePullPolicy: {{ .Values.manager.pullPolicy }}
+          name: {{ .Values.manager.name }}
+          resources: { }
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /app/config
+              name: config
+        - image: {{ .Values.registry }}/{{ .Values.manager.uiImage }}
+          imagePullPolicy: Always
+          name: {{ .Values.manager.name }}-ui
+          resources: { }
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: { }
+      serviceAccountName: redis-admin
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: {{ .Values.manager.name }}
+          name: config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.manager.name }}
+  namespace: {{ default .Values.namespace .Release.Namespace }}
+spec:
+  ports:
+    - port: 8088
+      protocol: TCP
+      targetPort: 8088
+  selector:
+    app: {{ .Values.manager.name }}
+  type: NodePort
+{{- end }}

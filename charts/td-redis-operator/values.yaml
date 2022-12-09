@@ -9,22 +9,23 @@ replicaCount: 1
 
 registry: tongduncloud
 
-# all|cluster|standby
+# all|cluster|standby|manager
 type: all
 
 image:
-  name: td-redis-operator:20220217-988260006de
+  name: td-redis-operator:latest
   pullPolicy: IfNotPresent
+
+monitorimage: redis-exporter:1.0
+secret: 88c185e86f684251
 
 cluster:
   enabled: false
   name: jerry
   #  production|demo|staging
   env: demo
-  secret: 88c185e86f684251
   #  appName: jerry
   image: redis-cluster:0.2
-  monitorimage: redis-exporter:1.0
   proxyimage: predixy:1.0
 
 standby:
@@ -32,8 +33,13 @@ standby:
   name: tom
   #  production|demo|staging
   env: demo
-  secret: 88c185e86f684251
   #  appName: cluster-tom
   image: redis-standby:1.0
-  monitorimage: redis-exporter:1.0
   sentinelimage: sentinel-standby:latest
+
+manager:
+  name: redis-manager
+  replicaCount: 1
+  image: td-redis-manager:latest
+  pullPolicy: IfNotPresent
+  uiImage: td-redis-operator-ui:latest
