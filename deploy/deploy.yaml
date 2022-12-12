@@ -420,7 +420,7 @@ spec:
         - /app/operator
         - --namespace=redis
         - --v=6
-        image: tongduncloud/td-redis-operator:20220217-988260006de
+        image: tongduncloud/td-redis-operator:latest
         imagePullPolicy: Always
         name: operator
         resources:
