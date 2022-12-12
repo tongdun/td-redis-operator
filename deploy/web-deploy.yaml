@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: manager
+  name: manager
+  namespace: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manager
+  template:
+    metadata:
+      labels:
+        app: manager
+    spec:
+      containers:
+      - command:
+        - /app/admin
+        - --configdir=/app/config
+        image: tongduncloud/td-redis-manager:latest
+        imagePullPolicy: Always
+        name: manager
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /app/config
+          name: config
+      - image: tongduncloud/td-redis-operator-ui:latest
+        imagePullPolicy: Always
+        name: manager-ui
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: admin
+      serviceAccountName: admin
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: manager
+        name: config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: manager
+  namespace: redis
+spec:
+  ports:
+  - port: 8088
+    protocol: TCP
+    targetPort: 8088
+  selector:
+    app: manager
+  sessionAffinity: None
+  type: NodePort
+
+---
+apiVersion: v1
+data:
+  config.yaml: |
+    namespace: redis
+    standbyimage: tongduncloud/redis-standby:1.0
+    sentiimage: tongduncloud/sentinel-standby:latest
+    clusterimage: tongduncloud/redis-cluster:0.2
+    proxyimage: tongduncloud/predixy:1.0
+    redissecret: 123
+    vip: 192.168.0.1
+    monitorimage: tongduncloud/redis-exporter:1.0
+kind: ConfigMap
+metadata:
+  name: manager
+  namespace: redis
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: admin-cluster
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- nonResourceURLs:
+  - '*'
+  verbs:
+  - '*'
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-cluster
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin-cluster
+subjects:
+- kind: ServiceAccount
+  name: admin
+  namespace: redis
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin
+  namespace: redis
