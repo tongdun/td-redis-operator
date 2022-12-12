@@ -1,8 +1,8 @@
 apiVersion: "v3"
 name: td-redis-operator
 description: A Helm chart for tongdun redis operator
-version: "1.0.0"
-appVersion: "1.0.0"
+version: "0.2.0"
+appVersion: "0.2.0"
 maintainers:
   - name: DoubleJ213
     email: herowenjj@gmail.com
