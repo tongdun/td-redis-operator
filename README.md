@@ -33,7 +33,8 @@ Completely based on cloud native technology to realize resource lifecycle manage
 
 Principle description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on kubernetes.
-* Two types of HA and RedisCluster are supported.
+* Two types of RedisCluster and Active/Standby are supported.
+
 
 <br>
 
