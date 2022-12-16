@@ -7,39 +7,48 @@ To learn more about the release, try:
   $ helm status {{ .Release.Name }} -n {{ .Release.Namespace }}
   $ helm get [command] {{ .Release.Name }} -n {{ .Release.Namespace }}
 
-Now you can enjoy your redis cluster !
-{{ if eq .Values.type "cluster"}}
+{{ if .Values.type }}
+    {{- $type := list "none" "all" "cluster" "standby" "manager" }}
+    {{- if has .Values.type $type }}
+        {{- if not (eq .Values.type "none") }}
+Default secret is: {{ .Values.secret }}
+Now you can enjoy your redis cluster!
+        {{- else }}
+Only install operator!
+You should install the redis cr by yourself or you can try --set type=xxx with your helm install command
+
+For more details:
+https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/README.md
+        {{- end }}
+
+        {{- if or (eq .Values.type "cluster") (eq .Values.type "all")}}
 #Kind: RedisCluster
 You can get the redis service by using command such as:
-  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }}
 
-you secret is: {{ .Values.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.secret }}
-{{ else if eq .Values.type "standby" }}
+#redis-cli -h $serviceIp:$port -a {{ .Values.secret }}
+        {{ end }}
+
+        {{- if or (eq .Values.type "standby") (eq .Values.type "all")}}
 #Kind: RedisStandby
-  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
+  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }}
 
-you secret is: {{ .Values.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.secret }}
+#redis-cli -h $serviceIp:$port -a {{ .Values.secret }}
+        {{- end }}
 
-{{ else if eq .Values.type "standby"}}
-#Kind: RedisCluster
-You can get the redis service by using command such as:
-  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.cluster.name }} -o jsonpath='{.spec.clusterIP}'
+        {{ if or (eq .Values.type "manager") (eq .Values.type "all")}}
+#Now you can access the td-redis-manager dashboard by visiting.
+#And install redis by using dashboard
+$ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.manager.name }}
 
-you secret is: {{ .Values.secret }}
-
-#Kind: RedisStandby
-  $ kubectl get svc -n {{ .Release.Namespace }} redis-{{ .Values.standby.name }} -o jsonpath='{.spec.clusterIP}'
-
-you secret is: {{ .Values.secret }}
-#redis-cli -h $serviceIp -a {{ .Values.secret }}
-
-{{ else if eq .Values.type "manager"}}
-
-#Now you can access the td-redis-manager dashboard by visiting :
-$ kubectl get svc -n {{ .Release.Namespace }} {{ .Values.manager.name }} -o jsonpath='{.spec.clusterIP}':8088
-
-default secret is: {{ .Values.secret }}
-
-{{ end }}
+        {{- end -}}
+    {{- else }}
+Unknown type, For more details:
+https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/README.md
+    {{- end -}}
+{{- else }}
+Only install operator!
+You should install the redis cr by yourself or you can try --set type=xxx with your helm install command
+For more details:
+https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/README.md
+{{- end }}

@@ -24,13 +24,16 @@ $ kubectl create namespace redis # 如果已经创建，忽略
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator
 or
 $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # 安装到default名称空间
-
-
+# 设置参数
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator --set type=cluster
-# 使用 --set type=cluster or type=standby 选择你需要安装的redis模式.
-# 使用 --set type=manager 安装 td-redis-manager控制台
-# 默认 安装cluster/standby redis集群，同时安装控制台
 ```
+
+### 参数
+- 使用 --set type=cluster or type=standby 选择你需要安装的redis模式.
+- 使用 --set type=manager 安装 td-redis-manager控制台
+- 因为[values.yaml](https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/values.yaml) 存在配置```type: all```
+  不设置type将安装所有类型
+- 使用 --set type=none. 只安装redis operator
 
 更多关于 [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example).
 
