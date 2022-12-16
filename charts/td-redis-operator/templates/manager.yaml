@@ -1,3 +1,4 @@
+{{- if .Values.type -}}
 {{- if or (eq .Values.type "manager") (eq .Values.type "all") -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -116,4 +117,5 @@ spec:
   selector:
     app: {{ .Values.manager.name }}
   type: NodePort
+{{- end }}
 {{- end }}

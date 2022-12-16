@@ -25,12 +25,18 @@ $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-opera
 or
 $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator # will be installed into the default namespace
 
-
+# enable arguments
 $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-operator --set type=cluster
-# You can use --set type=cluster or type=standby to choice which kind of redis to be installed .
-# use --set type=manager to install the dashboard of td-redis-manager
-# By default. cluster/standby redis are installed, and the dashboard is installed at the same time
+
 ```
+
+### arguments
+- use --set type=cluster or type=standby to choice which kind of redis to be installed.
+- --set type=manager. Install the dashboard of td-redis-manager
+- with ```type: all``` defined in
+  [values.yaml](https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/values.yaml).
+  No type to be set will install all of them
+- use --set type=none. only install redis operator
 
 _See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example)._
 
