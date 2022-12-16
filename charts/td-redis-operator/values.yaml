@@ -9,7 +9,7 @@ replicaCount: 1
 
 registry: tongduncloud
 
-# all|cluster|standby|manager
+# all|cluster|standby|manager|none
 type: all
 
 image:
@@ -20,7 +20,6 @@ monitorimage: redis-exporter:1.0
 secret: 88c185e86f684251
 
 cluster:
-  enabled: false
   name: jerry
   #  production|demo|staging
   env: demo
@@ -29,7 +28,6 @@ cluster:
   proxyimage: predixy:1.0
 
 standby:
-  enabled: false
   name: tom
   #  production|demo|staging
   env: demo

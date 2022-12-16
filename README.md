@@ -21,9 +21,7 @@ Current scale：
 
 # Introduction
 
-* Name: td-redis-operator
-* Language: Golang
-* Positioning: Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
+Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
 
 <a href="https://github.com/tongdun/td-redis-operator/wiki">Click here to view detailed information</a> about Introduction.
 
@@ -33,15 +31,16 @@ Current scale：
 
 ![td-redis-operator](docs/imgs/td-redis-operator-arch.jpg)
 
-Principle description:
+Description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on kubernetes.
-* Support two kinds of Redis instance management delivery, namely Redis active and standby and Redis Cluster.
+* Two types of RedisCluster and Active/Standby are supported.
+
 
 <br>
 
 # QuickStart
 
-You can use the `helm` command to deploy:
+You can use the `helm` command to install:
 
 ```
 $ helm repo add td-redis-operator https://tongdun.github.io/td-redis-operator/charts/td-redis-operator
@@ -49,9 +48,9 @@ $ helm repo update
 $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator      
 ```
 
-For details on the deployment process of `helm`, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Deploy-by-Helm"> helm deployment document </a>.
+For detailed documentation on installation via `helm`, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Install-td-redis-operator-via-HELM"> Installation documentation via HELM </a>.
 
-In addition to deploying with `helm`, you can also deploy with `kubectl` command:
+In addition to installing with `helm`, you can also install it via the `kubectl` command:
 
 ```
 $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/main/deploy/deploy.yaml
@@ -60,7 +59,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 
 ```
 
-For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Deploy-by-YAML"> yaml deployment document </a>.
+For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Install-td-redis-operator-via-YAML"> Installation documentation via YAML </a>.
 
 <br>
 
@@ -98,7 +97,6 @@ Welcome to our open source community `WeChat` group for detailed communication. 
 # Wiki
 
 <a href="https://github.com/tongdun/td-redis-operator/wiki">https://github.com/tongdun/td-redis-operator/wiki</a>
-
 
 <br>
 <br>
