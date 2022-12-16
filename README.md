@@ -31,7 +31,7 @@ Completely based on cloud native technology to realize resource lifecycle manage
 
 ![td-redis-operator](docs/imgs/td-redis-operator-arch.jpg)
 
-Architecture description:
+Description:
 * Based on <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator</a> open source products, it is completely operated and maintained on kubernetes.
 * Two types of RedisCluster and Active/Standby are supported.
 
