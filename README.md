@@ -27,7 +27,6 @@ Completely based on cloud native technology to realize resource lifecycle manage
 
 <a href="https://github.com/tongdun/td-redis-operator/wiki/Introduction">Click here to view detailed information</a> about Introduction.
 
-<br>
 
 ## Architecture
 
