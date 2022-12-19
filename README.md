@@ -70,7 +70,7 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 # AdminGuide
 
-<a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">Click here to view detailed information</a> about AdminGuide.
+AdminGuide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
 
 <br>
 
@@ -101,7 +101,7 @@ Welcome to our open source community `WeChat` group for detailed communication. 
 
 # Wiki
 
-<a href="https://github.com/tongdun/td-redis-operator/wiki">https://github.com/tongdun/td-redis-operator/wiki</a>
+Wiki: <a href="https://github.com/tongdun/td-redis-operator/wiki">https://github.com/tongdun/td-redis-operator/wiki</a>
 
 <br>
 <br>
