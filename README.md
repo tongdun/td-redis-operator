@@ -68,9 +68,9 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 <br>
 
-# AdminGuide
+# Admin Guide
 
-AdminGuide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
+Admin Guide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
 
 <br>
 
