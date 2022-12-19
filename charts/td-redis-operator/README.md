@@ -32,7 +32,7 @@ $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-opera
 
 ### arguments
 - use --set type=cluster or type=standby to choice which kind of redis to be installed.
-- --set type=manager. Install the dashboard of td-redis-manager
+- --set type=manager. Install the web management dashboard of td-redis-operator
 - with ```type: all``` defined in
   [values.yaml](https://github.com/tongdun/td-redis-operator/blob/main/charts/td-redis-operator/values.yaml).
   No type to be set will install all of them
