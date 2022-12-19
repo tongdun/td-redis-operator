@@ -21,13 +21,15 @@ Current scale：
 
 # Introduction
 
+## Overview
+
 Completely based on cloud native technology to realize resource lifecycle management, fault self-healing, HA, etc.
 
 <a href="https://github.com/tongdun/td-redis-operator/wiki/Introduction">Click here to view detailed information</a> about Introduction.
 
 <br>
 
-# Architecture
+## Architecture
 
 ![td-redis-operator](docs/imgs/td-redis-operator-arch.jpg)
 
