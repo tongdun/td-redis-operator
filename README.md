@@ -40,7 +40,7 @@ Description:
 
 # QuickStart
 
-## HELM
+## QuickStart with HELM
 
 You can use the `helm` command to install:
 
@@ -52,7 +52,7 @@ $ helm install [RELEASE_NAME] td-redis-operator/td-redis-operator
 
 For detailed documentation on installation via `helm`, see <a href="https://github.com/tongdun/td-redis-operator/wiki/Install-td-redis-operator-via-HELM"> Installation documentation via HELM </a>.
 
-## YAML
+## QuickStart with YAML
 
 In addition to installing with `helm`, you can also install it via the `kubectl` command:
 
