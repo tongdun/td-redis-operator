@@ -38,7 +38,7 @@ $ helm install --namespace=redis [RELEASE_NAME] td-redis-operator/td-redis-opera
   No type to be set will install all of them
 - use --set type=none. only install redis operator
 
-_See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Redis-Standby-Delivery-Example)._
+_See [RedisStandby and RedisCluster](https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide)._
 
 ```
 # kubectl  get pod
