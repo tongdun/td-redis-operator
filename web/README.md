@@ -1,11 +1,15 @@
-# td-redis-operator - ui
+# UI of td-redis-operator
+
 
 ## Local development
 Use `npm start` to start the service, and then automatically open the development page `http://localhost:9090` .
 
 
+
 ## Documents
-- [Antd component library](https://ant-design.gitee.io/components/overview-cn/)
+We use the web framework of <a href="https://ant-design.gitee.io/components/overview-cn">Antd component library</a>.
+
+
 
 ## Configuration instructions
 
@@ -15,8 +19,8 @@ Use `npm start` to start the service, and then automatically open the developmen
 * Build configuration: ./config/production.json
 
 
+
 ## State library description
 
 Currently react mainly uses react hooks api, and the state library mainly uses [hox](https://github.com/umijs/hox/blob/master/README-cn.md)
-
 Reference for using react hooks [hooks best practice](http://wiki.tongdun.me/pages/viewpage.action?pageId=33236516)
