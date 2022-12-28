@@ -22,5 +22,4 @@ We use the web framework of <a href="https://ant-design.gitee.io/components/over
 
 ## State library description
 
-Currently react mainly uses react hooks api, and the state library mainly uses [hox](https://github.com/umijs/hox)
-Reference for using react hooks [hooks best practice](http://wiki.tongdun.me/pages/viewpage.action?pageId=33236516)
+Currently react mainly uses react hooks api, and the state library mainly uses [hox](https://github.com/umijs/hox).
