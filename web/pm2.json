@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "td-redis-operator-ui",
+      "script": "./dist/server.js",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+      "out_file": "../output/td-redis-operator-ui/logs/app.log",
+      "error_file": "../output/td-redis-operator-ui/logs/error.log",
+      "pid_file": "./app.pid",
+      "ignoreWatch": ["[\\/\\\\]\\./", "node_modules"],
+      "watch": "true",
+      "exec_mode": "fork",
+      "instance_var": "INSTANCE_ID",
+      "instances": 1,
+      "listen_timeout": 3000,
+      "kill_timeout": 1600,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

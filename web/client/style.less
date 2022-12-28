@@ -1,0 +1,64 @@
+@import '~antd/es/style/themes/default.less';
+
+:global {
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow-y: auto;
+    background-color: #f0f2f5;
+    text-rendering: optimizeLegibility;
+    text-rendering: initial;
+    -webkit-font-smoothing: initial;
+    font-family: 'HiraginoSansGB-W3', 'Chinese Quote', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'PingFang SC',
+      'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
+  }
+
+  canvas {
+    display: block;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  .compact-form .ant-form-item {
+    margin-bottom: 12px;
+  }
+
+  .sortableHelper {
+    z-index: 9999;
+  }
+
+  .ant-row {
+    display: flex !important;
+  }
+
+  .ant-table-pagination.ant-pagination {
+    margin-right: 10px !important;
+  }
+  .ant-table-thead > tr > th {
+    font-weight: bold !important;
+  }
+  .ant-card-head {
+    font-weight: bold !important;
+  }
+
+  .ant-table-cell button:first-child {
+    padding-left: 0;
+  }
+
+  .ant-progress-circle.ant-progress-status-success .ant-progress-text {
+    color: #35d2a2 !important;
+  }
+
+  .redis-quota-radio label {
+    width: 70px;
+  }
+}
