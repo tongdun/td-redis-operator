@@ -1,19 +1,22 @@
 # td-redis-operator - ui
 
-## 本地开发
-npm start 启动服务后自动打开开发页面http://localhost:9090
+## Local development
+Use `npm start` to start the service, and then automatically open the development page `http://localhost:9090` .
 
-## 相关文档
-- [Antd组件库](https://ant-design.gitee.io/components/overview-cn/)
 
-## 配置说明
+## Documents
+- [Antd component library](https://ant-design.gitee.io/components/overview-cn/)
 
-配置文件路径： ./config
-默认配置：./config/default.json
-本地开发配置：./config/development.json
-生成配置：./config/production.json
+## Configuration instructions
 
-## 状态库说明
+* Configuration file path: ./config
+* Default configuration: ./config/default.json
+* Local development configuration: ./config/development.json
+* Build configuration: ./config/production.json
 
-当前react主要使用react hooks api，状态库主要使用[hox](https://github.com/umijs/hox/blob/master/README-cn.md);
-react hooks的使用参考 [hooks最佳实践](http://wiki.tongdun.me/pages/viewpage.action?pageId=33236516)
+
+## State library description
+
+Currently react mainly uses react hooks api, and the state library mainly uses [hox](https://github.com/umijs/hox/blob/master/README-cn.md)
+
+Reference for using react hooks [hooks best practice](http://wiki.tongdun.me/pages/viewpage.action?pageId=33236516)
