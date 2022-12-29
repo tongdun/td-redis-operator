@@ -72,6 +72,9 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 Admin Guide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
 
+![td-redis-operator-ui](docs/imgs/td-redis-operator-ui-operator.png)
+
+
 <br>
 
 # Roadmap for future plans
