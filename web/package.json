@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "http",
-    "url": "https://github.com/tongdun/td-redis-operator-ui.git"
+    "url": "https://github.com/tongdun/td-redis-operator.git"
   },
   "scripts": {
     "start": "rm -rf ./dist && export NODE_ENV=development && tdtool start",

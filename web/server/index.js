@@ -75,7 +75,7 @@ app.get('/ok.htm', (_req, res) => res.send('ok')); // 服务是否可用的检�
 app
   .listen(port, () => {
     if (isDebug) {
-      console.log(`The server is running at http://localhost.tongdun.cn:${port}/`);
+      console.log(`The server is running at http://localhost:${port}/`);
     } else {
       console.log(`The server is running at http://127.0.0.1:${port}/`);
     }
