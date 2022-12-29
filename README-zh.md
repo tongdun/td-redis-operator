@@ -58,13 +58,13 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 
 <br>
 
-# AdminGuide
+# Admin Guide
    
 除了可以通过命令行来操作td-redis-operator，还可以通过Web界面来进行操作。
 
 ![td-redis-operator-ui](docs/imgs/td-redis-operator-ui-operator.png)
 
-点击查看：https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide
+更多操作手册可以查看 https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide
     
 <br>
     
