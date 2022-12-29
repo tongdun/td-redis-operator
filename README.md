@@ -72,6 +72,8 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 In addition to the command line, you can operate td redis operator through the Web Management Dashboard. We integrate the Web Management Dashboard to make it easier for you to use td-redis-operator.
 
+![td-redis-operator-ui](docs/imgs/td-redis-operator-ui-config.png)
+
 Admin Guide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
 
 <br>
