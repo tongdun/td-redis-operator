@@ -64,7 +64,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/tongdun/td-redis-operator/m
 
 ![td-redis-operator-ui](docs/imgs/td-redis-operator-ui-operator.png)
 
-更多操作手册可以查看 <a href="https://github.com/tongdun/td-redis-operator/wiki/管理指南">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
+更多操作手册可以查看 <a href="https://github.com/tongdun/td-redis-operator/wiki/管理指南"> td-redis-operator管理指南 </a>
     
 <br>
     
