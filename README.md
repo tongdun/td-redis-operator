@@ -70,27 +70,12 @@ For more YAML files, see <a href="https://github.com/tongdun/td-redis-operator/w
 
 # Admin Guide
 
-Admin Guide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
-
 ![td-redis-operator-ui](docs/imgs/td-redis-operator-ui-operator.png)
 
+Admin Guide: <a href="https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide">https://github.com/tongdun/td-redis-operator/wiki/Admin-Guide</a>
 
 <br>
 
-# Roadmap for future plans
-
-We will support the following features in the future:
-
-* Support customization of service exposure ServiceType parameter.
-* Cache node shrink scene logic optimization.
-* Supports customization of storage parameters.
-* Support all kinds of back-end storage (hostPath/NFS/Ceph rbd/cephfs/public cloud storage...).
-* Open source the supporting redis web management platform.
-* The web platform also supports monitoring curves.
-* ...
-
-
-<br>
 
 # Community group
 
