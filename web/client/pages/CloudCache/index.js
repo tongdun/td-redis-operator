@@ -42,10 +42,6 @@ export default () => {
 
   const showSecret = secret => () => message.info(secret, 5);
 
-  const openMonitor = record => {
-    window.open(`https://tcloud-monitor.tongdun.cn/screen?type=grp&target=redis-${record.name}`);
-  };
-
   const onRefresh = async () => {
     await loadDataSource();
   };
@@ -198,14 +194,6 @@ export default () => {
             }}>
             详情
           </Button>
-          {/*<Button
-            type="link"
-            block
-            onClick={() => {
-              openMonitor(record);
-            }}>
-            监控
-          </Button>*/}
           <Dropdown
             overlay={
               <Menu>

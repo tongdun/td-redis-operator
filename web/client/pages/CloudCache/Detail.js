@@ -73,10 +73,6 @@ export default ({ visible, setVisible, instance = {} }) => {
     setConfig(res || []);
   };
 
-  const openMonitor = () => {
-    window.open(`https://tcloud-monitor.tongdun.cn/screen?type=grp&target=redis-${instance.name}`);
-  };
-
   const saveConfig = () => {
     const passed = config.every(c => {
       if (c.value_type === 'string') {
@@ -277,9 +273,6 @@ export default ({ visible, setVisible, instance = {} }) => {
         <Tabs defaultActiveKey="1" tabPosition="left">
           <TabPane tab="概览" key="1">
             <Space style={{ marginBottom: 16, float: 'right' }}>
-              {/*<Button onClick={openMonitor} type="primary">
-                监控
-              </Button>*/}
               <Button onClick={showSecret} type="primary">
                 查看密码
               </Button>
