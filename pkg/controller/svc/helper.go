@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	corev1 "k8s.io/api/core/v1"
-	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/types"
 )
@@ -33,11 +32,11 @@ func parseSelector(v string) (labels.Selector, error) {
 	return labels.SelectorFromSet(labels.Set(m)), nil
 }
 
-func podToEndpointAddress(pod *v1.Pod) *v1.EndpointAddress {
-	return &v1.EndpointAddress{
+func podToEndpointAddress(pod *corev1.Pod) *corev1.EndpointAddress {
+	return &corev1.EndpointAddress{
 		IP:       pod.Status.PodIP,
 		NodeName: &pod.Spec.NodeName,
-		TargetRef: &v1.ObjectReference{
+		TargetRef: &corev1.ObjectReference{
 			Kind:            "Pod",
 			Namespace:       pod.Namespace,
 			Name:            pod.Name,
@@ -46,7 +45,7 @@ func podToEndpointAddress(pod *v1.Pod) *v1.EndpointAddress {
 		}}
 }
 
-func endpointChanged(pod1, pod2 *v1.Pod) bool {
+func endpointChanged(pod1, pod2 *corev1.Pod) bool {
 	endpointAddress1 := podToEndpointAddress(pod1)
 	endpointAddress2 := podToEndpointAddress(pod2)
 
