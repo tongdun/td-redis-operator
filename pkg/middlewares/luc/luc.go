@@ -21,7 +21,7 @@ func Luc(g *gin.Context) {
 	}
 	token := g.GetHeader("x-user-token")
 	if token == "" || token == "null" {
-		errlog := fmt.Sprintf("luc get token failed")
+		errlog := "luc get token failed"
 		g.JSON(http.StatusBadRequest, Result(errlog, false))
 		g.Abort()
 		return
