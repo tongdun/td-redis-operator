@@ -78,7 +78,7 @@ func GetRedisVM() ([]Redis, error) {
 		}
 		rows.Close()
 	}
-	sql = fmt.Sprintf("select cluster_name,owner from redis_vm")
+	sql = "select cluster_name,owner from redis_vm"
 	vm_owner := map[string]string{}
 	rows, err := mon.Query(sql)
 	if err != nil {
